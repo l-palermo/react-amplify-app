@@ -1,0 +1,18 @@
+{
+  "name": "react-amplify-app",
+  "version": "1.0.0",
+  "description": "",
+  "main":	"index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Luigi <luigi.palermo@clearscore.com> (https://www.clearscore.com/)",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-server": "^3.7.2"
+  }
+}
