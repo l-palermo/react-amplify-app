@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./app.js";
-ReactDOM.render(<App />, document.getElementById("root"));
+import Amplify from "aws-amplify";
+import awsConfig from "./aws-exports";
 
-console.log("Helooooo World");
+Amplify.configure(awsConfig);
+
+ReactDOM.render(<App />, document.getElementById("root"));
