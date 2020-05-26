@@ -1,7 +1,7 @@
 const path = require("path");
-const webpack = require("webpack");
-// why do I need this ? 
-// const CopyWebpackPlugin = require('copy-webpack-plugin')
+// const webpack = require("webpack");
+// const CopyWebpackPlugin = require("copy-webpack-plugin");
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: "development",
@@ -34,12 +34,11 @@ module.exports = {
   // where the bundle will be stored
   output: {
     filename: "bundle.js",
-    publicPath: "/dist/",
     path: path.resolve(__dirname, "dist"),
   },
   devServer: {
     // tells webpack where to take the content from
-    contentBase: "./public",
+    contentBase: "./dist",
     // needs to be specified ...?
     port: 8000,
     // compress the bundle
@@ -49,10 +48,10 @@ module.exports = {
   },
   // allows no page refresh
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    // why do I need this? 
-    // new CopyWebpackPlugin({ patterns: ['./public/index.html']}),
+    // new CleanWebpackPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
+    // new CopyWebpackPlugin({ patterns: ["./dist/index.html"] }),
   ],
-  // enables source maps 
-  devtool: "source-map",
+  // enables source maps
+  devtool: "eval-source-map",
 };
