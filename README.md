@@ -4,6 +4,24 @@
 
 ### Steps:
 
-> Add a simple and minimal webpack config.
+> Add a minimal webpack config.
+* Deps: 
+    * webpack
+    * webpack-cli
+    * webpack-dev-server
+> Add a minimal babel config
+* Deps:
+    * @babel/cli
+    * @babel/core
+    * @babel/preset-env
+    * babel-loader
+    * @babel/polyfill
+> Add minimal react config
+* Deps:
+    * @babel/preset-react
+    * style-loader
+    * css-loader
+    * react
+    * react-dom
 
 
