@@ -4,6 +4,19 @@ module.exports = {
   mode: "development",
   // entry point to load all the dependencies/modules included in the app
   entry: "./src/index.js",
+  module: {
+    rules: [{
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      loader: "babel-loader",
+      options: {
+        rootMode: "upward",
+      }
+    }]
+  },
+  resolve: {
+    extensions: ['*', '.js'],
+  },
   // where the bundle will be stored with props
   output: {
     filename: "bundle.js",
