@@ -1,5 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
+// why do I need this ? 
+// const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: "development",
@@ -14,6 +16,7 @@ module.exports = {
         loader: "babel-loader",
         options: {
           rootMode: "upward",
+          // this might be unnecessary, check
           presets: ["@babel/env"],
         },
       },
@@ -25,7 +28,8 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"],
+    // console error were due to .mjs extension missing
+    extensions: ["*", ".mjs", ".js", ".jsx"],
   },
   // where the bundle will be stored
   output: {
@@ -44,5 +48,11 @@ module.exports = {
     hotOnly: true,
   },
   // allows no page refresh
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    // why do I need this? 
+    // new CopyWebpackPlugin({ patterns: ['./public/index.html']}),
+  ],
+  // enables source maps 
+  devtool: "source-map",
 };

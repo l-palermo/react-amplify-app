@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App.js";
-ReactDOM.render(<App />, document.getElementById("root"));
+import App from "./app.js";
+import Amplify from "aws-amplify";
+import awsConfig from "./aws-exports";
 
-console.log("Helooooo World");
-const array = Array.from("foo");
-console.log(array);
+Amplify.configure(awsConfig);
+
+ReactDOM.render(<App />, document.getElementById("root"));
