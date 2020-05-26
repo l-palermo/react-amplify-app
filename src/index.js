@@ -1,5 +1,6 @@
-console.log('Helooooo World')
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./app.js";
+ReactDOM.render(<App />, document.getElementById("root"));
 
-const array = Array.from('foo')
-
-console.log(array)
+console.log("Helooooo World");
