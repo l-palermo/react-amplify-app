@@ -1,7 +1,8 @@
 const path = require("path");
-// const webpack = require("webpack");
+const webpack = require("webpack");
 // const CopyWebpackPlugin = require("copy-webpack-plugin");
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -16,7 +17,6 @@ module.exports = {
         loader: "babel-loader",
         options: {
           rootMode: "upward",
-          // this might be unnecessary, check
           presets: ["@babel/env"],
         },
       },
@@ -48,10 +48,13 @@ module.exports = {
   },
   // allows no page refresh
   plugins: [
-    // new CleanWebpackPlugin(),
-    // new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     // new CopyWebpackPlugin({ patterns: ["./dist/index.html"] }),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+    }),
   ],
   // enables source maps
-  devtool: "eval-source-map",
+  devtool: "source-map",
 };
