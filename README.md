@@ -38,5 +38,14 @@ Sign up to aws, install amplify, connect it to aws account, add auth.
 * Deps: 
     * aws-amplify
     * @aws-amplify/ui-react
+    * clean-webpack-plugin
+    * html-webpack-plugin
+
+> Update webpack to bundle css
+
+At the moment css module is not in use.
+* Deps:
+    * html-webpack-link-type-plugin
+    * mini-css-extract-plugin
 
 

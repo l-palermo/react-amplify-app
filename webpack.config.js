@@ -2,11 +2,16 @@ const path = require("path");
 const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const LinkTypePlugin = require("html-webpack-link-type-plugin")
+  .HtmlWebpackLinkTypePlugin;
 
 module.exports = function (webpackEnv) {
-  const isEnvProduction = webpackEnv === 'production';
+  const cssRegex = /\.css$/;
+  const cssModuleRegex = /\.module\.css$/;
+  const isEnvProduction = webpackEnv === "production";
   return {
-    mode: isEnvProduction ? 'production' : 'development',
+    mode: isEnvProduction ? "production" : "development",
     // entry point to load all the dependencies/modules included in the app
     entry: "./src/index.js",
     module: {
@@ -21,11 +26,43 @@ module.exports = function (webpackEnv) {
             presets: ["@babel/env"],
           },
         },
-        // css rule
+        // plain css rule
         {
-          test: /\.css$/,
-          use: ["style-loader", "css-loader"],
+          test: cssRegex,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                // only enable hot in development
+                hmr: process.env.NODE_ENV === "development",
+                // if hmr does not work, this is a forceful method.
+                reloadAll: true,
+              },
+            },
+            {
+              loader: require.resolve("css-loader"),
+              options: { importLoaders: 1 },
+            },
+          ],
         },
+        // {
+        //   test: cssModuleRegex,
+        //   use: [
+        //     {
+        //       loader: require.resolve("style-loader"),
+        //       options: {
+        //         // only enable hot in development
+        //         hmr: process.env.NODE_ENV === "development",
+        //         // if hmr does not work, this is a forceful method.
+        //         reloadAll: true,
+        //       },
+        //     },
+        //     {
+        //       loader: require.resolve("css-loader"),
+        //       options: { importLoaders: 1 },
+        //     },
+        //   ],
+        // },
       ],
     },
     resolve: {
@@ -54,8 +91,12 @@ module.exports = function (webpackEnv) {
       new HtmlWebpackPlugin({
         template: "./public/index.html",
       }),
+      new MiniCssExtractPlugin(),
+      new LinkTypePlugin({
+        "**/*.css": "text/css",
+      }),
     ],
     // enables source maps
-    devtool: webpackEnv === 'development' ? "inline-source-map" : "source-map",
+    devtool: webpackEnv === "development" ? "inline-source-map" : "source-map",
   };
 };
