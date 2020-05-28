@@ -1,15 +1,18 @@
 import React from "react";
-import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import { AmplifyAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 // seems I have no need for react-hot-loader
 
-import style from "./style.css";
+import styles from "./styles.css";
+import SplashScreen from "./components/splash-screen";
 
 const App = () => (
   <React.Fragment>
-    <h1>Hello world 2</h1><AmplifySignOut />
+    <SplashScreen duration={4000} />
+    <AmplifyAuthenticator>
+      <h1>Hello world 2</h1>
+      <AmplifySignOut />
+    </AmplifyAuthenticator>
   </React.Fragment>
 );
 
-export default withAuthenticator(App, {
-  usernameAlias: "email",
-});
+export default App;
