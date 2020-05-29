@@ -1,16 +1,15 @@
 import React from "react";
-import { AmplifyAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
-// seems I have no need for react-hot-loader
+import { AmplifyAuthenticator } from "@aws-amplify/ui-react";
 
 import styles from "./styles.css";
 import SplashScreen from "./components/splash-screen";
+import HomePage from './pages/home-page';
 
 const App = () => (
   <React.Fragment>
-    <SplashScreen duration={4000} />
+    <SplashScreen duration={1000} />
     <AmplifyAuthenticator>
-      <h1>Hello world 2</h1>
-      <AmplifySignOut />
+      <HomePage />
     </AmplifyAuthenticator>
   </React.Fragment>
 );
