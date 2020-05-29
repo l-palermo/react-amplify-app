@@ -1,0 +1,49 @@
+.navbar {
+  max-width: 100%;
+  height: fit-content;
+  box-shadow: 1px 0px 3px 3px rgb(151, 151, 151);
+  background-color: rgba(255, 255, 255, 0.705);
+}
+
+.navbarLayout {
+  display: grid;
+  grid-template-columns: auto 1rem 1fr 1rem auto;
+}
+
+@media (min-width: 768px) {
+  .navbarLayout {
+    grid-template-columns: auto 2rem 1fr 2rem auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbarLayout {
+    grid-template-columns: auto 2rem 1fr 2rem auto;
+  }
+}
+
+.signoutButton {
+  grid-column: 5;
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.logo {
+  grid-column: 1;
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+.search {
+  grid-column: 3;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,30 @@
+.div0 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 1rem;
+}
+
+.div1 {
+  height: 300px;
+  background-color: coral;
+}
+
+.div2 {
+  height: 300px;
+  background-color: rgb(135, 255, 80);
+}
+
+.div3 {
+  height: 300px;
+  background-color: rgb(106, 80, 255);
+}
+
+.div4 {
+  height: 300px;
+  background-color: rgb(80, 243, 255);
+}
+
+.div5 {
+  height: 300px;
+  background-color: rgb(255, 80, 80);
+}
