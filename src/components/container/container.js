@@ -1,14 +1,19 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-import "./container.css";
+import styles from "./container.module.css";
 
 const Container = ({ children }) => {
   // add padding prop
   return (
-    <div className="container">
-      <div className="children">{children}</div>
+    <div className={styles.container}>
+      <div className={styles.children}>{children}</div>
     </div>
   );
+};
+
+Container.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Container;

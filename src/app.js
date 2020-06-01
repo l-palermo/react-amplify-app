@@ -1,15 +1,20 @@
 import React from "react";
 import { AmplifyAuthenticator } from "@aws-amplify/ui-react";
 
-import styles from "./styles.css";
+import "./styles.css";
 import SplashScreen from "./components/splash-screen";
-import HomePage from './pages/home-page';
+import HomePage from "./pages/home-page";
+import Background from "./components/background";
+import Navbar from "./components/navbar";
 
 const App = () => (
   <React.Fragment>
-    <SplashScreen duration={1000} />
+    <SplashScreen duration={2000} />
     <AmplifyAuthenticator>
-      <HomePage />
+      <Background>
+        <Navbar />
+        <HomePage />
+      </Background>
     </AmplifyAuthenticator>
   </React.Fragment>
 );

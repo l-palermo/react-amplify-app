@@ -3,8 +3,7 @@ const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const LinkTypePlugin = require("html-webpack-link-type-plugin")
-  .HtmlWebpackLinkTypePlugin;
+const { HtmlWebpackLinkTypePlugin } = require("html-webpack-link-type-plugin");
 
 module.exports = function (webpackEnv) {
   const cssRegex = /\.css$/;
@@ -32,37 +31,49 @@ module.exports = function (webpackEnv) {
           use: [
             {
               loader: MiniCssExtractPlugin.loader,
-              options: {
-                // only enable hot in development
-                hmr: process.env.NODE_ENV === "development",
-                // if hmr does not work, this is a forceful method.
-                reloadAll: true,
-              },
             },
             {
-              loader: require.resolve("css-loader"),
-              options: { importLoaders: 1 },
+              loader: "css-loader",
+              options: {
+                // it applies css modules to imported resources
+                importLoaders: 1,
+              },
+            },
+          ],
+          exclude: cssModuleRegex,
+        },
+        {
+          test: cssModuleRegex,
+          use: [
+            {
+              // it is an alternative to style-loader, it extract css
+              loader: MiniCssExtractPlugin.loader,
+            },
+            {
+              loader: "css-loader",
+              options: {
+                // it applies css modules to imported resources
+                importLoaders: 1,
+                // tells css loader to enable modules
+                modules: {
+                  localIdentName: "[name]__[local]____[hash:base64:5]",
+                },
+              },
             },
           ],
         },
-        // {
-        //   test: cssModuleRegex,
-        //   use: [
-        //     {
-        //       loader: require.resolve("style-loader"),
-        //       options: {
-        //         // only enable hot in development
-        //         hmr: process.env.NODE_ENV === "development",
-        //         // if hmr does not work, this is a forceful method.
-        //         reloadAll: true,
-        //       },
-        //     },
-        //     {
-        //       loader: require.resolve("css-loader"),
-        //       options: { importLoaders: 1 },
-        //     },
-        //   ],
-        // },
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: "@svgr/webpack",
+              // loader: "svg-url-loader",
+              options: {
+                limit: 10000,
+              },
+            },
+          ],
+        },
       ],
     },
     resolve: {
@@ -84,15 +95,19 @@ module.exports = function (webpackEnv) {
       // allows the hot module replacement
       hotOnly: true,
     },
-    // allows no page refresh
     plugins: [
+      // cleans the dist folder after the server run each time
       new CleanWebpackPlugin(),
+      // allows no page refresh ??? atm reload the server only not the page
       new webpack.HotModuleReplacementPlugin(),
+      // creates a index.html file in the dist folder with the correct script for the bundle
       new HtmlWebpackPlugin({
         template: "./public/index.html",
       }),
+      // it creates a style.css fine in bundle
       new MiniCssExtractPlugin(),
-      new LinkTypePlugin({
+      // it create a link to the styles.css in the new index.html
+      new HtmlWebpackLinkTypePlugin({
         "**/*.css": "text/css",
       }),
     ],
