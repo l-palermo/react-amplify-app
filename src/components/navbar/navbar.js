@@ -1,30 +1,42 @@
 import React from "react";
-import { AmplifySignOut } from "@aws-amplify/ui-react";
-import { BsSearch } from "react-icons/bs";
+import PropTypes from "prop-types";
 
-import "./navbar.css";
+import styles from "./navbar.module.css";
 import Container from "../container";
+import SearchInput from "./components/search-input";
+import MenuItem from "./components/menu-item";
+import signOut from "../../helpers/crud/sign-out";
+import LogOutIcon from "../../assets/log-out/log-out.svg";
+import PersonIcon from "../../assets/person/person.svg";
 
-const Navbar = () => {
-  // finish navbar with input field and other functionalities
+const Navbar = ({ userName }) => {
   return (
-    <div className="navbar">
+    <div className={styles.navbar}>
       <Container>
-        <div className="navbarLayout">
-          <div className="logo">CATURDAY</div>
-          <div className="search">
-            {/* the style needs to be sort out */}
-            <BsSearch
-              style={{ width: 24, height: 24, transform: "rotate(90deg)" }}
+        <div className={styles.navbarLayout}>
+          <div className={styles.logo}>CATURDAY</div>
+          <div className={styles.buttons}>
+            <SearchInput />
+            <MenuItem
+              Icon={PersonIcon}
+              hasMarginRight
+              name="My account"
+              onClick={() => {}}
             />
-          </div>
-          <div className="signoutButton">
-            <AmplifySignOut />
+            <MenuItem
+              Icon={LogOutIcon}
+              name="Log out"
+              onClick={() => signOut()}
+            />
           </div>
         </div>
       </Container>
     </div>
   );
+};
+
+Navbar.propTypes = {
+  userName: PropTypes.string.isRequired,
 };
 
 export default Navbar;

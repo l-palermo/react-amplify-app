@@ -48,4 +48,19 @@ At the moment css module is not in use.
     * html-webpack-link-type-plugin
     * mini-css-extract-plugin
 
+> Add css module to webpack and svg
+
+*Deps: 
+    *  "@svgr/webpack"
+
+
+> Add homepage with some UI components
+
+* Deps: 
+    * "@babel/plugin-transform-runtime" - { needed to allows custom UI log out }
+    * "@babel/runtime"
+    * "classnames"
+
+
+
 
