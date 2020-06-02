@@ -19,7 +19,6 @@
     * @babel/core
     * @babel/preset-env
     * babel-loader
-    * @babel/polyfill
 
 
 > Add minimal react config
@@ -38,8 +37,17 @@ Sign up to aws, install amplify, connect it to aws account, add auth.
 * Deps: 
     * aws-amplify
     * @aws-amplify/ui-react
+
+
+> Add amplify
+
+Sign up to aws, install amplify, connect it to aws account, add auth.
+* Deps: 
+    * aws-amplify
+    * @aws-amplify/ui-react
     * clean-webpack-plugin
     * html-webpack-plugin
+
 
 > Update webpack to bundle css
 
@@ -47,6 +55,7 @@ At the moment css module is not in use.
 * Deps:
     * html-webpack-link-type-plugin
     * mini-css-extract-plugin
+
 
 > Add css module to webpack and svg
 
@@ -60,6 +69,28 @@ At the moment css module is not in use.
     * "@babel/plugin-transform-runtime" - { needed to allows custom UI log out }
     * "@babel/runtime"
     * "classnames"
+
+> Add eslint 
+
+* Deps:
+    * eslint
+    * eslint-plugin-react
+    * prettier
+
+
+> Add Jest as test framework
+
+* Deps:
+    * babel-jest
+    * jest
+    * jest-environment-enzyme
+    * jest-enzyme
+    * enzyme
+    * enzyme-adapter-react-16
+    * identity-obj-proxy
+
+
+
 
 
 

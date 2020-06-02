@@ -14,7 +14,9 @@ const Navbar = ({ userName }) => {
     <div data-qa="navbar" className={styles.navbar}>
       <Container>
         <div data-qa="navbar-layout" className={styles.navbarLayout}>
-          <div data-qa="logo" className={styles.logo}>CATURDAY</div>
+          <div data-qa="logo" className={styles.logo}>
+            CATURDAY
+          </div>
           <div className={styles.buttons}>
             <SearchInput />
             <MenuItem Icon={PersonIcon} hasMarginRight name={userName} onClick={() => {}} />

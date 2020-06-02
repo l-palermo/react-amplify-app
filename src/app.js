@@ -9,7 +9,7 @@ import Navbar from './components/navbar';
 
 const App = () => (
   <React.Fragment>
-    <SplashScreen duration={2000} />
+    <SplashScreen duration={3000} />
     <AmplifyAuthenticator>
       <Background>
         <Navbar />

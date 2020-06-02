@@ -1,28 +1,28 @@
-const path = require("path");
-const webpack = require("webpack");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { HtmlWebpackLinkTypePlugin } = require("html-webpack-link-type-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { HtmlWebpackLinkTypePlugin } = require('html-webpack-link-type-plugin');
 
 module.exports = function (webpackEnv) {
   const cssRegex = /\.css$/;
   const cssModuleRegex = /\.module\.css$/;
-  const isEnvProduction = webpackEnv === "production";
+  const isEnvProduction = webpackEnv === 'production';
   return {
-    mode: isEnvProduction ? "production" : "development",
+    mode: isEnvProduction ? 'production' : 'development',
     // entry point to load all the dependencies/modules included in the app
-    entry: "./src/index.js",
+    entry: './src/index.js',
     module: {
       rules: [
         // js, jsx rules
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            rootMode: "upward",
-            presets: ["@babel/env"],
+            rootMode: 'upward',
+            presets: ['@babel/env'],
           },
         },
         // plain css rule
@@ -33,7 +33,7 @@ module.exports = function (webpackEnv) {
               loader: MiniCssExtractPlugin.loader,
             },
             {
-              loader: "css-loader",
+              loader: 'css-loader',
               options: {
                 // it applies css modules to imported resources
                 importLoaders: 1,
@@ -50,13 +50,13 @@ module.exports = function (webpackEnv) {
               loader: MiniCssExtractPlugin.loader,
             },
             {
-              loader: "css-loader",
+              loader: 'css-loader',
               options: {
                 // it applies css modules to imported resources
                 importLoaders: 1,
                 // tells css loader to enable modules
                 modules: {
-                  localIdentName: "[name]__[local]____[hash:base64:5]",
+                  localIdentName: '[name]__[local]____[hash:base64:5]',
                 },
               },
             },
@@ -66,7 +66,7 @@ module.exports = function (webpackEnv) {
           test: /\.svg$/,
           use: [
             {
-              loader: "@svgr/webpack",
+              loader: '@svgr/webpack',
               // loader: "svg-url-loader",
               options: {
                 limit: 10000,
@@ -78,16 +78,16 @@ module.exports = function (webpackEnv) {
     },
     resolve: {
       // console error were due to .mjs extension missing
-      extensions: ["*", ".mjs", ".js", ".jsx"],
+      extensions: ['*', '.mjs', '.js', '.jsx'],
     },
     // where the bundle will be stored
     output: {
-      filename: "bundle.js",
-      path: path.resolve(__dirname, "dist"),
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist'),
     },
     devServer: {
       // tells webpack where to take the content from
-      contentBase: "./dist",
+      contentBase: './dist',
       // needs to be specified ...?
       port: 8000,
       // compress the bundle
@@ -102,16 +102,16 @@ module.exports = function (webpackEnv) {
       new webpack.HotModuleReplacementPlugin(),
       // creates a index.html file in the dist folder with the correct script for the bundle
       new HtmlWebpackPlugin({
-        template: "./public/index.html",
+        template: './public/index.html',
       }),
       // it creates a style.css fine in bundle
       new MiniCssExtractPlugin(),
       // it create a link to the styles.css in the new index.html
       new HtmlWebpackLinkTypePlugin({
-        "**/*.css": "text/css",
+        '**/*.css': 'text/css',
       }),
     ],
     // enables source maps
-    devtool: webpackEnv === "development" ? "inline-source-map" : "source-map",
+    devtool: webpackEnv === 'development' ? 'inline-source-map' : 'source-map',
   };
 };
