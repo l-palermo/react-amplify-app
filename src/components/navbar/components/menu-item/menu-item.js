@@ -20,7 +20,7 @@ const MenuItem = ({ Icon, onClick, hasMarginRight, hasCircle, name }) => {
       </button>
       {hasNameBox && (
         <div data-qa="name-box" className={styles.nameBox}>
-          <p className="styles.name">{name}</p>
+          <p className={styles.name}>{name}</p>
         </div>
       )}
     </div>

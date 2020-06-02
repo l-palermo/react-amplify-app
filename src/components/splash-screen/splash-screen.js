@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './splash-screen.css';
+import './splash-screen.css';
 
 const SplashScreen = ({ duration }) => {
   const [isRendered, setIsRendered] = useState(true);
@@ -24,7 +24,7 @@ const SplashScreen = ({ duration }) => {
         animationDelay: `0ms, ${fadeInDuration}ms`,
       }}
     >
-      <h1 data-qa="splash-screen-logo" className={styles.splashScreenLogo}>
+      <h1 data-qa="splash-screen-logo" className="splashScreenLogo">
         CATURDAY
       </h1>
     </div>

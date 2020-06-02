@@ -26,12 +26,13 @@
   z-index: 200;
 }
 
-.splashScreenText {
+.splashScreenLogo {
+  color: white;
   font-size: 3rem;
 }
 
 @media (min-width: 1200px) {
-  .splashScreenText {
+  .splashScreenLogo {
     font-size: 6rem;
   }
 }
