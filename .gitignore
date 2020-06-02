@@ -9,7 +9,7 @@ amplify/backend/awscloudformation
 build/
 dist/
 node_modules/
-aws-exports
+aws-exports.js
 awsconfiguration.json
 amplifyconfiguration.json
 amplify-build-config.json
@@ -21,3 +21,6 @@ dist/
 
 # env
 .env
+
+# .gitignore
+.gitignore
