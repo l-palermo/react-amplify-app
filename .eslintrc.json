@@ -25,5 +25,11 @@
     // "react/react-in-jsx-scope ": ["off"],
     "no-undef": "off",
     "react/display-name": "off"
+  },
+  // add react version to support plugin:react
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

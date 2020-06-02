@@ -90,3 +90,9 @@ At the moment css module is not in use.
     * enzyme
     * enzyme-adapter-react-16
     * identity-obj-proxy { needed to test css-modules }
+---
+
+<h4>Add husky precommit hook</h4>
+
+* Deps:
+    * husky

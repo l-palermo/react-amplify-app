@@ -6,7 +6,9 @@
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "test": "jest --config ./jest.config.json",
-    "build": "webpack"
+    "build": "webpack",
+    "lint": "./node_modules/.bin/eslint ./src",
+    "prettier": "./node_modules/.bin/prettier --write 'src/**/*.js'"
   },
   "keywords": [],
   "author": "Luigi <luigi.palermo@clearscore.com> (https://www.clearscore.com/)",
@@ -30,6 +32,7 @@
     "eslint-plugin-react": "7.20.0",
     "html-webpack-link-type-plugin": "1.0.3",
     "html-webpack-plugin": "4.3.0",
+    "husky": "4.2.5",
     "identity-obj-proxy": "3.0.0",
     "jest": "26.0.1",
     "jest-environment-enzyme": "7.1.2",
@@ -52,5 +55,10 @@
       "@babel/preset-env",
       "@babel/preset-react"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test && npm run lint"
+    }
   }
 }
