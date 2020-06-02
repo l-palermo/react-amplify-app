@@ -1,17 +1,13 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-import styles from "./menu-item.module.css";
+import styles from './menu-item.module.css';
 
 const MenuItem = ({ Icon, onClick, hasMarginRight, hasCircle, name }) => {
   const [hasNameBox, setHasNameBox] = useState(false);
   return (
-    <div
-      className={styles.menuItem}
-      onMouseEnter={() => setHasNameBox(true)}
-      onMouseLeave={() => setHasNameBox(false)}
-    >
+    <div data-qa="menu-item" className={styles.menuItem} onMouseEnter={() => setHasNameBox(true)} onMouseLeave={() => setHasNameBox(false)}>
       <button
         className={cx(styles.button, {
           [styles.marginRight]: hasMarginRight,
@@ -23,8 +19,8 @@ const MenuItem = ({ Icon, onClick, hasMarginRight, hasCircle, name }) => {
         <Icon className={styles.icon} />
       </button>
       {hasNameBox && (
-        <div className={styles.nameBox}>
-          <p style={{ margin: 0 }}>{name}</p>
+        <div data-qa="name-box" className={styles.nameBox}>
+          <p className="styles.name">{name}</p>
         </div>
       )}
     </div>

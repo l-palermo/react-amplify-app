@@ -1,13 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styles from "./container.module.css";
+import styles from './container.module.css';
 
 const Container = ({ children }) => {
   // add padding prop
   return (
-    <div className={styles.container}>
-      <div className={styles.children}>{children}</div>
+    <div data-qa="container" className={styles.container}>
+      <div data-qa="container-children" className={styles.children}>
+        {children}
+      </div>
     </div>
   );
 };

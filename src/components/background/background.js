@@ -1,10 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styles from "./background.module.css";
+import styles from './background.module.css';
 
 const Background = ({ children }) => {
-  return <div className={styles.background}>{children}</div>;
+  return (
+    <div data-qa="background" className={styles.background}>
+      {children}
+    </div>
+  );
 };
 
 Background.propTypes = {
