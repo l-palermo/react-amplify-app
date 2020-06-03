@@ -1,8 +1,14 @@
 import React from 'react';
 
 import SearchInput from '.';
+import { UserContextProvider } from '../../../../helpers/user-context/user-context';
 
-const setupTest = () => mount(<SearchInput />);
+const setupTest = () =>
+  mount(
+    <UserContextProvider>
+      <SearchInput />
+    </UserContextProvider>
+  );
 
 describe('SearchInput', () => {
   it('should render a menu-item by default', () => {
