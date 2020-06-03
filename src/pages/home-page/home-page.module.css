@@ -6,26 +6,14 @@
 }
 
 .div1 {
-  height: 300px;
-  background-color: coral;
+  height: 290px;
+  max-width: 100%;
+  display: flex;
+  border-radius: 2rem;
 }
 
-.div2 {
-  height: 300px;
-  background-color: rgb(135, 255, 80);
-}
-
-.div3 {
-  height: 300px;
-  background-color: rgb(106, 80, 255);
-}
-
-.div4 {
-  height: 300px;
-  background-color: rgb(80, 243, 255);
-}
-
-.div5 {
-  height: 300px;
-  background-color: rgb(255, 80, 80);
+.image {
+  min-width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
 }
