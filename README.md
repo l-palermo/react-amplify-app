@@ -2,7 +2,18 @@
 
 > First approach to include AWS amplify to a react app.
 
-### Steps:
+`todo:
+'I should create a todo app to keep my todos.'
+Add routing, homepage and search results page. { The user is routed to the searchPage after clicking enter } 
+Turn the logo into a home button... Maybe add a label on hover??
+Separate page concerns and functions.
+Review test and code structure
+Think of passing the context function as a prop to avoid UI component dependency.
+Rethink folder structure
+Sort out login (eg. user name/ email)
+Add message as verification method`
+
+### Project setup and dependencies:
 
 <h4>Add a minimal webpack config</h4>
 

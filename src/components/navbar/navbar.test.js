@@ -1,8 +1,14 @@
 import React from 'react';
 
 import Navbar from '.';
+import { UserContextProvider } from '../../helpers/user-context/user-context';
 
-const setupTest = () => mount(<Navbar />);
+const setupTest = () =>
+  mount(
+    <UserContextProvider>
+      <Navbar />
+    </UserContextProvider>
+  );
 
 describe('Navbar', () => {
   it('should render the navbar', () => {

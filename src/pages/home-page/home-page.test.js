@@ -1,8 +1,14 @@
 import React from 'react';
 
 import HomePage from '.';
+import { UserContextProvider } from '../../helpers/user-context/user-context';
 
-const setupTest = () => mount(<HomePage />);
+const setupTest = () =>
+  mount(
+    <UserContextProvider>
+      <HomePage />
+    </UserContextProvider>
+  );
 
 describe('HomePage', () => {
   it('should render', () => {
