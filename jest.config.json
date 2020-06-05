@@ -1,6 +1,6 @@
 {
   "setupFilesAfterEnv": [
-    "<rootDir>/src/helpers/enzyme-setup/enzyme-setup.js",
+    "<rootDir>/src/helpers/test-setup/test-setup.js",
     "jest-enzyme"
   ],
   "moduleNameMapper": {

@@ -5,6 +5,7 @@ import styles from './navbar.module.css';
 import Container from '../container';
 import SearchInput from './components/search-input';
 import MenuItem from './components/menu-item';
+import Logo from './components/logo';
 import signOut from '../../helpers/crud/sign-out';
 import LogOutIcon from '../../assets/log-out/log-out.svg';
 import PersonIcon from '../../assets/person/person.svg';
@@ -14,9 +15,7 @@ const Navbar = ({ userName }) => {
     <div data-qa="navbar" className={styles.navbar}>
       <Container>
         <div data-qa="navbar-layout" className={styles.navbarLayout}>
-          <div data-qa="logo" className={styles.logo}>
-            CATURDAY
-          </div>
+          <Logo path='/'>CATURDAY</Logo>
           <div className={styles.buttons}>
             <SearchInput />
             <MenuItem Icon={PersonIcon} hasMarginRight name={userName} onClick={() => {}} />

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import styles from './container.module.css';
 
-const Container = ({ children }) => {
+const Container = ({ children, dataId }) => {
   // add padding prop
   return (
-    <div data-qa="container" className={styles.container}>
+    <div className={styles.container} data-qa="container" data-id={dataId}>
       <div data-qa="container-children" className={styles.children}>
         {children}
       </div>
@@ -16,6 +16,11 @@ const Container = ({ children }) => {
 
 Container.propTypes = {
   children: PropTypes.node.isRequired,
+  dataId: PropTypes.string,
+};
+
+Container.defaultProps = {
+  dataId: '',
 };
 
 export default Container;

@@ -1,0 +1,12 @@
+.card {
+    height: 290px;
+    max-width: 100%;
+    display: flex;
+    border-radius: 2rem;
+  }
+  
+  .image {
+    min-width: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+  }

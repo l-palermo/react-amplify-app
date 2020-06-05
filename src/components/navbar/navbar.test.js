@@ -1,13 +1,16 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 
 import Navbar from '.';
 import { UserContextProvider } from '../../helpers/user-context/user-context';
 
 const setupTest = () =>
   mount(
-    <UserContextProvider>
-      <Navbar />
-    </UserContextProvider>
+    <MemoryRouter>
+      <UserContextProvider>
+        <Navbar />
+      </UserContextProvider>
+    </MemoryRouter>
   );
 
 describe('Navbar', () => {

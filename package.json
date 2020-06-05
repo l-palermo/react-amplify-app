@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development",
+    "start": "webpack-dev-server",
     "test": "jest --config ./jest.config.json",
-    "build": "webpack",
+    "build": "webpack --env.production",
     "lint": "./node_modules/.bin/eslint ./src",
     "prettier": "./node_modules/.bin/prettier --write 'src/**/*.js'"
   },
@@ -48,7 +48,8 @@
   "dependencies": {
     "@babel/polyfill": "7.8.7",
     "@babel/runtime": "7.10.2",
-    "classnames": "2.2.6"
+    "classnames": "2.2.6",
+    "react-router-dom": "5.2.0"
   },
   "babel": {
     "presets": [
