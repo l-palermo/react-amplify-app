@@ -1,25 +1,30 @@
 import React from 'react';
 import { AmplifyAuthenticator } from '@aws-amplify/ui-react';
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
 
 import './styles.css';
 import SplashScreen from './components/splash-screen';
 import HomePage from './pages/home-page';
+import SearchResult from './pages/search-result-page';
 import Background from './components/background';
 import Navbar from './components/navbar';
 import { UserContextProvider } from './helpers/user-context/user-context';
 
 const App = () => (
-  <React.Fragment>
+  <BrowserRouter>
     <SplashScreen duration={3000} />
     <AmplifyAuthenticator>
       <UserContextProvider>
         <Background>
           <Navbar />
-          <HomePage />
+          <Switch>
+            <Route exact path="/" render={() => <HomePage />} />
+            <Route exac path="/search" render={() => <SearchResult />} />
+          </Switch>
         </Background>
       </UserContextProvider>
     </AmplifyAuthenticator>
-  </React.Fragment>
+  </BrowserRouter>
 );
 
 export default App;

@@ -6,18 +6,20 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { HtmlWebpackLinkTypePlugin } = require('html-webpack-link-type-plugin');
 
 module.exports = function (webpackEnv) {
+  const jsjsxRegex = /\.(js|jsx)$/;
   const cssRegex = /\.css$/;
   const cssModuleRegex = /\.module\.css$/;
-  const isEnvProduction = webpackEnv === 'production';
+  const env = webpackEnv ? 'production' : 'development';
+
   return {
-    mode: isEnvProduction ? 'production' : 'development',
+    mode: env,
     // entry point to load all the dependencies/modules included in the app
     entry: './src/index.js',
     module: {
       rules: [
         // js, jsx rules
         {
-          test: /\.(js|jsx)$/,
+          test: jsjsxRegex,
           exclude: /node_modules/,
           loader: 'babel-loader',
           options: {
@@ -85,15 +87,19 @@ module.exports = function (webpackEnv) {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
+    // enables source maps
+    devtool: webpackEnv ? 'source-map' : 'inline-source-map',
     devServer: {
+      // allow refreshing page on a client route path, this is because the server doesn't know about the 'client side routes'
+      historyApiFallback: true,
       // tells webpack where to take the content from
       contentBase: './dist',
       // needs to be specified ...?
       port: 8000,
       // compress the bundle
       compress: true,
-      // allows the hot module replacement
-      hotOnly: true,
+      hot: true,
+      // hotOnly: true,
     },
     plugins: [
       // cleans the dist folder after the server run each time
@@ -111,7 +117,5 @@ module.exports = function (webpackEnv) {
         '**/*.css': 'text/css',
       }),
     ],
-    // enables source maps
-    devtool: webpackEnv === 'development' ? 'inline-source-map' : 'source-map',
   };
 };

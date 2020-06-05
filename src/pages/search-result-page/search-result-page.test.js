@@ -1,7 +1,7 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
-import HomePage from '.';
+import SearchResultPage from './search-result-page';
 import { UserContextProvider } from '../../helpers/user-context/user-context';
 
 global.fetch = jest.fn().mockImplementation(() =>
@@ -17,13 +17,13 @@ global.fetch = jest.fn().mockImplementation(() =>
 
 const setupTest = () =>
   mount(
-    <UserContextProvider>
-      <HomePage />
+    <UserContextProvider value={{ searchValue: 'test' }}>
+      <SearchResultPage />
     </UserContextProvider>
   );
 
-describe('HomePage', () => {
-  it('should render', async () => {
+describe('Search result page', () => {
+  it('render the page correctly', async () => {
     let wrapper;
 
     await act(async () => {
@@ -31,8 +31,8 @@ describe('HomePage', () => {
     });
     wrapper.update();
 
-    expect(wrapper.find('[data-qa="home-page"]')).toHaveLength(1);
-    expect(wrapper.find('CardsLayout [data-id="home-page-cards-layout"]')).toHaveLength(1);
+    expect(wrapper.find('Container [data-id="search-result-page"]')).toHaveLength(1);
+    expect(wrapper.find('CardsLayout [data-id="search-result-cards-layout"]')).toHaveLength(1);
     expect(wrapper.find('CardsLayout [className="card"]')).toHaveLength(2);
   });
 });

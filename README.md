@@ -3,10 +3,7 @@
 > First approach to include AWS amplify to a react app.
 
 `todo:
-'I should create a todo app to keep my todos.'
-Add routing, homepage and search results page. { The user is routed to the searchPage after clicking enter } 
-Turn the logo into a home button... Maybe add a label on hover??
-Separate page concerns and functions.
+home page label on hover logo link
 Review test and code structure
 Think of passing the context function as a prop to avoid UI component dependency.
 Rethink folder structure
@@ -107,3 +104,9 @@ At the moment css module is not in use.
 
 * Deps:
     * husky
+---
+
+<h4>Add react router</h4>
+
+* Deps:
+    * react-router-dom

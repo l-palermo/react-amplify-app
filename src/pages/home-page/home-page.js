@@ -1,41 +1,33 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styles from './home-page.module.css';
 import Container from '../../components/container';
-import fetchTrendingGifs from '../../helpers/fetch-content/fetch-home-content';
-import fetchSearchGifs from '../../helpers/fetch-content/fetch-search-content';
-import { UserContext } from '../../helpers/user-context/user-context';
+import CardsLayout from '../..//components/cards-layout';
+import { GFY_TRENTING_QS } from './constants';
 
 const HomePage = () => {
   const [gifs, setGifs] = useState([]);
 
-  const { searchValue } = useContext(UserContext);
-
   useEffect(() => {
-    if (searchValue) {
-      fetchSearchGifs(searchValue)
-        .then((data) => setGifs(data.gfycats))
-        .catch((err) => err);
-    } else {
-      fetchTrendingGifs()
-        .then((data) => setGifs(data.gfycats))
-        .catch((err) => err);
-    }
-  }, [searchValue]);
+    fetch(GFY_TRENTING_QS)
+      .then((response) => response.json())
+      .then((data) => setGifs(data.gfycats))
+      .catch((err) => err);
+  }, []);
 
   return (
     <div data-qa="home-page">
-      <Container>
-        <div className={styles.div0}>
+      <Container dataId="home-page">
+        <CardsLayout dataId="home-page-cards-layout">
           {gifs.map((gif) => {
             const { gifUrl, gfyName, gfyId } = gif;
             return (
-              <div key={gfyId} className={styles.div1}>
+              <div key={gfyId} className={styles.card}>
                 <img className={styles.image} src={gifUrl} alt={gfyName} />
               </div>
             );
           })}
-        </div>
+        </CardsLayout>
       </Container>
     </div>
   );

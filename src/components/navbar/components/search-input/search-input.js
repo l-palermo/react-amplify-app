@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import styles from './search-input.module.css';
 import SearchIcon from '../../../../assets/search/search.svg';
@@ -9,22 +10,25 @@ import { UserContext } from '../../../../helpers/user-context/user-context';
 const SearchInput = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [searchItem, setSearchItem] = useState('');
+  const history = useHistory();
 
   const { setSearchValue } = useContext(UserContext);
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       setSearchValue(searchItem);
+      setSearchItem('');
+      history.push('/search');
     }
   };
 
   return isVisible ? (
-    <div data-qa="search-input" className={styles.searchInput}>
+    <div className={styles.searchInput} data-qa="search-input">
       <input
         className={styles.input}
         type="text"
         value={searchItem}
-        placeholder="Search.."
+        placeholder="Search..."
         onChange={(e) => setSearchItem(e.target.value)}
         onKeyPress={(e) => handleKeyPress(e)}
       />
