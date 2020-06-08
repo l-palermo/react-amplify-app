@@ -3,6 +3,7 @@
 > First approach to include AWS amplify to a react app.
 
 `todo:
+why npm do not allow to add commands like --watch to the standard one?? 
 home page label on hover logo link
 Review test and code structure
 Think of passing the context function as a prop to avoid UI component dependency.

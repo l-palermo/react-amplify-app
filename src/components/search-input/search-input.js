@@ -2,10 +2,11 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import styles from './search-input.module.css';
-import SearchIcon from '../../../../assets/search/search.svg';
-import ArrowRightIcon from '../../../../assets/arrow-right/arrow-right.svg';
+import SearchIcon from '../../assets/search/search.svg';
+import ArrowRightIcon from '../../assets/arrow-right/arrow-right.svg';
+import { UserContext } from '../../helpers/user-context/user-context';
 import MenuItem from '../menu-item/';
-import { UserContext } from '../../../../helpers/user-context/user-context';
+
 
 const SearchInput = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,7 +36,7 @@ const SearchInput = () => {
       <MenuItem Icon={ArrowRightIcon} name="Close" hasCircle={false} onClick={() => setIsVisible(false)} />
     </div>
   ) : (
-    <MenuItem Icon={SearchIcon} hasMarginRight name="Search" onClick={() => setIsVisible(true)} />
+    <MenuItem dataId="search-button" Icon={SearchIcon} hasMarginRight name="Search" onClick={() => setIsVisible(true)} />
   );
 };
 

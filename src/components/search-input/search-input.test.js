@@ -2,7 +2,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
 import SearchInput from '.';
-import { UserContextProvider } from '../../../../helpers/user-context/user-context';
+import { UserContextProvider } from '../../helpers/user-context/user-context';
 
 const setupTest = () =>
   mount(
@@ -53,7 +53,18 @@ describe('SearchInput', () => {
     expect(wrapper.find('input')).toHaveProp('value', 'this is a test');
 
     wrapper.find('input').simulate('keypress', { key: 'Enter' });
+
     expect(wrapper.find('input')).toHaveProp('value', '');
   });
-  // test react router action
+  it('should not fire the search if a key instaed of Enter is pressed', () => {
+    const wrapper = setupTest();
+    wrapper.find('button').simulate('click');
+    wrapper.find('input').simulate('change', { target: { value: 'this is a test' } });
+
+    expect(wrapper.find('input')).toHaveProp('value', 'this is a test');
+
+    wrapper.find('input').simulate('keypress', { key: 'Up' });
+
+    expect(wrapper.find('input')).not.toHaveProp('value', '');
+  });
 });

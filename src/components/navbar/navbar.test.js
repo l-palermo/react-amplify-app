@@ -4,11 +4,14 @@ import { MemoryRouter } from 'react-router-dom';
 import Navbar from '.';
 import { UserContextProvider } from '../../helpers/user-context/user-context';
 
+const requiredProps = {
+  logOut: jest.fn(),
+};
 const setupTest = () =>
   mount(
     <MemoryRouter>
       <UserContextProvider>
-        <Navbar />
+        <Navbar {...requiredProps} />
       </UserContextProvider>
     </MemoryRouter>
   );
@@ -28,13 +31,21 @@ describe('Navbar', () => {
   });
   it('should render a navbar with the correct buttons', () => {
     const wrapper = setupTest();
-    const buttonNames = [{ name: 'Search' }, { name: 'My account' }, { name: 'Log out' }];
+    const buttonNames = [{ name: 'Search' }, { name: 'Log out' }];
 
     const buttons = wrapper.find('[data-qa="navbar"] MenuItem');
-    expect(buttons).toHaveLength(3);
+    expect(buttons).toHaveLength(2);
 
     buttons.forEach((button, index) => {
       expect(button).toHaveProp('name', buttonNames[index].name);
     });
+  });
+  it('should call the log out function', () => {
+    const wrapper = setupTest();
+    const logOutButton = wrapper.find('[data-id="log-out-button"] button');
+
+    logOutButton.simulate('click');
+
+    expect(requiredProps.logOut).toHaveBeenCalled();
   });
 });

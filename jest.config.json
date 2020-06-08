@@ -1,11 +1,23 @@
 {
-  "setupFilesAfterEnv": [
-    "<rootDir>/src/helpers/test-setup/test-setup.js",
-    "jest-enzyme"
-  ],
+  "setupFilesAfterEnv": ["<rootDir>/src/helpers/test-setup/test-setup.js", "jest-enzyme"],
   "moduleNameMapper": {
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/file-mock.js",
     "\\.(css|less)$": "identity-obj-proxy"
   },
-  "testEnvironment": "enzyme"
+  "testEnvironment": "enzyme",
+  "collectCoverageFrom": [
+    "**/src/**",
+    "!**/aws-exports.js",
+    "!**/index.js",
+    "!**/node_modules/**",
+    "!**/helpers/**"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "branches": 100,
+      "functions": 100,
+      "lines": 100,
+      "statements": 100
+    }
+  }
 }
