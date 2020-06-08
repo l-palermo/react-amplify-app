@@ -4,6 +4,12 @@ import { act } from 'react-dom/test-utils';
 import HomePage from '.';
 import { UserContextProvider } from '../../helpers/user-context/user-context';
 
+const mockClipboard = {
+  writeText: jest.fn(),
+};
+
+global.navigator.clipboard = mockClipboard;
+
 global.fetch = jest.fn().mockImplementation(() =>
   Promise.resolve({
     json: () => ({
@@ -23,6 +29,9 @@ const setupTest = () =>
   );
 
 describe('HomePage', () => {
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
   it('should render', async () => {
     let wrapper;
 
@@ -33,6 +42,6 @@ describe('HomePage', () => {
 
     expect(wrapper.find('[data-qa="home-page"]')).toHaveLength(1);
     expect(wrapper.find('CardsLayout [data-id="home-page-cards-layout"]')).toHaveLength(1);
-    expect(wrapper.find('CardsLayout [className="card"]')).toHaveLength(2);
+    expect(wrapper.find('CardsLayout [data-qa="card"]')).toHaveLength(2);
   });
 });

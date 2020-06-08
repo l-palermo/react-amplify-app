@@ -25,4 +25,17 @@ describe('App', () => {
     const wrapper = setupTest();
     expect(wrapper.find('[data-qa="home-page"]')).toHaveLength(1);
   });
+  it('should render the search result page', () => {
+    const wrapper = setupTest();
+
+    const searchButton = wrapper.find('[data-id="search-button"]');
+    searchButton.find('button').simulate('click');
+
+    const searchInput = wrapper.find('[data-qa="search-input"] input');
+    searchInput.simulate('change', { target: { value: 'this is a test' } });
+
+    searchInput.simulate('keypress', { key: 'Enter'});
+
+    expect(wrapper.find('[data-id="search-result-page"]')).toHaveLength(1);
+  });
 });

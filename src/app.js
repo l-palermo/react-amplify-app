@@ -8,6 +8,7 @@ import HomePage from './pages/home-page';
 import SearchResult from './pages/search-result-page';
 import Background from './components/background';
 import Navbar from './components/navbar';
+import logOut from './helpers/crud/log-out';
 import { UserContextProvider } from './helpers/user-context/user-context';
 
 const App = () => (
@@ -16,7 +17,7 @@ const App = () => (
     <AmplifyAuthenticator>
       <UserContextProvider>
         <Background>
-          <Navbar />
+          <Navbar logOut={logOut} />
           <Switch>
             <Route exact path="/" render={() => <HomePage />} />
             <Route exac path="/search" render={() => <SearchResult />} />
