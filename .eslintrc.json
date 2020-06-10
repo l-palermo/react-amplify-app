@@ -1,35 +1,31 @@
 {
-  "env": {
-    "browser": true,
-    "es6": true,
-    "jest": true
-  },
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jest": true
     },
-    "ecmaVersion": 11,
-    "sourceType": "module"
-  },
-  "plugins": ["react"],
-  "rules": {
-    "indent": ["error", 2],
-    "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
-    // "react/react-in-jsx-scope ": ["off"],
-    "no-undef": "off",
-    "react/display-name": "off"
-  },
-  // add react version to support plugin:react
-  "settings": {
-    "react": {
-      "version": "detect"
+    "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": ["react", "prettier"],
+    "rules": {
+        "prettier/prettier": "error",
+        "no-undef": "off",
+        "react/display-name": "off"
+    },
+    // add react version to support plugin:react
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
-  }
 }

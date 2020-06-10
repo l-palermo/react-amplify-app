@@ -1,38 +1,38 @@
 @keyframes splashFadeIn {
-  from {
-    background-color: rgb(101, 240, 198);
-  }
+    from {
+        background-color: rgb(101, 240, 198);
+    }
 
-  to {
-    background-color: rgb(187, 238, 110);
-  }
+    to {
+        background-color: rgb(187, 238, 110);
+    }
 }
 
 @keyframes splashFadeOut {
-  to {
-    opacity: 0;
-  }
+    to {
+        opacity: 0;
+    }
 }
 
 .splashScreen {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 200;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
 }
 
 .splashScreenLogo {
-  color: white;
-  font-size: 3rem;
+    color: white;
+    font-size: 3rem;
 }
 
 @media (min-width: 1200px) {
-  .splashScreenLogo {
-    font-size: 6rem;
-  }
+    .splashScreenLogo {
+        font-size: 6rem;
+    }
 }
