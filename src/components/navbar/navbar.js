@@ -9,23 +9,28 @@ import Logo from '../logo';
 import LogOutIcon from '../../assets/log-out/log-out.svg';
 
 const Navbar = ({ logOut }) => {
-  return (
-    <div data-qa="navbar" className={styles.navbar}>
-      <Container>
-        <div data-qa="navbar-layout" className={styles.navbarLayout}>
-          <Logo path="/">CATURDAY</Logo>
-          <div className={styles.buttons}>
-            <SearchInput />
-            <MenuItem dataId="log-out-button" Icon={LogOutIcon} name="Log out" onClick={logOut} />
-          </div>
+    return (
+        <div data-qa="navbar" className={styles.navbar}>
+            <Container>
+                <div data-qa="navbar-layout" className={styles.navbarLayout}>
+                    <Logo path="/">CATURDAY</Logo>
+                    <div className={styles.buttons}>
+                        <SearchInput />
+                        <MenuItem
+                            dataId="log-out-button"
+                            Icon={LogOutIcon}
+                            name="Log out"
+                            onClick={logOut}
+                        />
+                    </div>
+                </div>
+            </Container>
         </div>
-      </Container>
-    </div>
-  );
+    );
 };
 
 Navbar.propTypes = {
-  logOut: PropTypes.func.isRequired,
+    logOut: PropTypes.func.isRequired,
 };
 
 export default Navbar;

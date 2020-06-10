@@ -7,37 +7,47 @@ import ArrowRightIcon from '../../assets/arrow-right/arrow-right.svg';
 import { UserContext } from '../../helpers/user-context/user-context';
 import MenuItem from '../menu-item/';
 
-
 const SearchInput = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [searchItem, setSearchItem] = useState('');
-  const history = useHistory();
+    const [isVisible, setIsVisible] = useState(false);
+    const [searchItem, setSearchItem] = useState('');
+    const history = useHistory();
 
-  const { setSearchValue } = useContext(UserContext);
+    const { setSearchValue } = useContext(UserContext);
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      setSearchValue(searchItem);
-      setSearchItem('');
-      history.push('/search');
-    }
-  };
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            setSearchValue(searchItem);
+            setSearchItem('');
+            history.push('/search');
+        }
+    };
 
-  return isVisible ? (
-    <div className={styles.searchInput} data-qa="search-input">
-      <input
-        className={styles.input}
-        type="text"
-        value={searchItem}
-        placeholder="Search..."
-        onChange={(e) => setSearchItem(e.target.value)}
-        onKeyPress={(e) => handleKeyPress(e)}
-      />
-      <MenuItem Icon={ArrowRightIcon} name="Close" hasCircle={false} onClick={() => setIsVisible(false)} />
-    </div>
-  ) : (
-    <MenuItem dataId="search-button" Icon={SearchIcon} hasMarginRight name="Search" onClick={() => setIsVisible(true)} />
-  );
+    return isVisible ? (
+        <div className={styles.searchInput} data-qa="search-input">
+            <input
+                className={styles.input}
+                type="text"
+                value={searchItem}
+                placeholder="Search..."
+                onChange={(e) => setSearchItem(e.target.value)}
+                onKeyPress={(e) => handleKeyPress(e)}
+            />
+            <MenuItem
+                Icon={ArrowRightIcon}
+                name="Close"
+                hasCircle={false}
+                onClick={() => setIsVisible(false)}
+            />
+        </div>
+    ) : (
+        <MenuItem
+            dataId="search-button"
+            Icon={SearchIcon}
+            hasMarginRight
+            name="Search"
+            onClick={() => setIsVisible(true)}
+        />
+    );
 };
 
 export default SearchInput;

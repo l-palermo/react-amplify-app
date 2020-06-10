@@ -1,14 +1,18 @@
-# react-amplify-app
+# react-amplify-app / CATURDAY
 
-> First approach to include AWS amplify to a react app.
+Deployed at: https://master.d3q12s0gysig02.amplifyapp.com/
 
-`todo:
-why npm do not allow to add commands like --watch to the standard one?? 
-home page label on hover logo link
+CATURDAY is a simple web app that allows the user to find cool gif and easily share them with friends.
+It uses AWS Amplify for user authentication, securely store data and user metadata and for the CI/CD lifecycle. React as UI library tool, webpack, babel, post-css, css-module and jest/enzyme.
+
+The goal is to add a database and allow the users to create their own gif collection.
+
+
+`Todos:
+Create a GitHub packages repo and migrate app components.
+Refactor components to be context agnostic
+Homepage label when hover logo link
 Review test and code structure
-Think of passing the context function as a prop to avoid UI component dependency.
-Rethink folder structure
-Sort out login (eg. user name/ email)
 Add message as verification method`
 
 ### Project setup and dependencies:
@@ -87,6 +91,8 @@ At the moment css module is not in use.
     * eslint
     * eslint-plugin-react
     * prettier
+    * eslint-config-prettier
+    * eslint-plugin-prettier
 ---
 
 <h4>Add Jest as test framework</h4>
@@ -111,3 +117,12 @@ At the moment css module is not in use.
 
 * Deps:
     * react-router-dom
+---
+
+<h4>Add post-css, stylelint</h4>
+
+* Deps:
+    * postcss-loader
+    * postcss-nested
+    * stylelint
+    * stylelint-config-standard
