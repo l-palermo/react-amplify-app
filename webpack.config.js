@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { HtmlWebpackLinkTypePlugin } = require('html-webpack-link-type-plugin');
 
 module.exports = function (webpackEnv) {
+
     const jsjsxRegex = /\.(js|jsx)$/;
     const cssRegex = /\.css$/;
     const cssModuleRegex = /\.module\.css$/;
