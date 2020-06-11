@@ -18,7 +18,7 @@ describe('SplashScreen', () => {
     it('should have the correct animation frames', () => {
         const wrapper = setupTest();
         const style = {
-            animation: 'splashFadeIn 2100ms ease forwards, splashFadeOut 1200ms',
+            animationDuration: '2100ms, 1200ms',
             animationDelay: '0ms, 2100ms',
         };
         expect(wrapper.find('[data-qa="splash-screen"]')).toHaveProp('style', style);

@@ -2,18 +2,18 @@
 
 .container {
     display: grid;
-    grid-template-columns: 1rem 1fr 1rem;
-    grid-template-rows: 0.5rem 1fr 0.5rem;
+    grid-template-columns: var(--spacing-m) 1fr var(--spacing-m);
+    grid-template-rows: var(--spacing-xs) 1fr var(--spacing-xs);
     align-items: center;
 
     @media (min-width: 480px) {
-        grid-template-columns: 3rem 1fr 3rem;
-        grid-template-rows: 1rem 1fr 1rem;
+        grid-template-columns: var(--spacing-xl) 1fr var(--spacing-xl);
+        grid-template-rows: var(--spacing-m) 1fr var(--spacing-m);
     }
 
     @media (min-width: 1200px) {
-        grid-template-columns: 6rem 1fr 6rem;
-        grid-template-rows: 1rem 1fr 1rem;
+        grid-template-columns: var(--spacing-xxxl) 1fr var(--spacing-xxxl);
+        grid-template-rows: var(--spacing-m) 1fr var(--spacing-m);
     }
 }
 

@@ -1,0 +1,9 @@
+:root {
+    --font-size-xxs: 0.75rem;
+    --font-size-xs: 1rem;
+    --font-size-s: 1.25rem;
+    --font-size-m: 1.5rem;
+    --font-size-l: 2rem;
+    --font-size-xl: 3rem;
+    --font-size-xxl: 6rem;
+}

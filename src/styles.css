@@ -1,9 +1,12 @@
+@import './helpers/css-global-variables/font-sizes.css';
+@import './helpers/css-global-variables/spacing.css';
+
 body {
-  font-family: Arial, Helvetica, sans-serif !important;
-  margin: 0;
-  color: rgb(37, 37, 37);
+    font-family: Arial, Helvetica, sans-serif !important;
+    margin: 0;
+    color: rgb(37, 37, 37);
 }
 
 html::-webkit-scrollbar {
-  width: 0;
+    width: 0;
 }

@@ -41,6 +41,9 @@ module.exports = function (webpackEnv) {
                                 importLoaders: 1,
                             },
                         },
+                        {
+                            loader: 'postcss-loader',
+                        },
                     ],
                     exclude: cssModuleRegex,
                 },
