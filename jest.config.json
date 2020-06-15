@@ -8,6 +8,7 @@
   "collectCoverageFrom": [
     "**/src/**",
     "!**/aws-exports.js",
+    "!**/withAuth.js",
     "!**/index.js",
     "!**/node_modules/**",
     "!**/helpers/**"
