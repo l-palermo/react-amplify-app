@@ -4,10 +4,21 @@ import App from './app';
 
 const setupTest = () => mount(<App />);
 
+const setSessionStorage = (bool) => (global.sessionStorage.isLoggedIn = JSON.stringify(bool));
+
 describe('App', () => {
-    it('should render a splash screen', () => {
+    beforeEach(() => {
+        setSessionStorage(false);
+    });
+
+    it('should render a splash screen only when user first log in', () => {
         const wrapper = setupTest();
         expect(wrapper.find('[data-qa="splash-screen"]')).toHaveLength(1);
+    });
+    it('should not render the splash screen if the user refresh the page', () => {
+        setSessionStorage(true);
+        const wrapper = setupTest();
+        expect(wrapper.find('[data-qa="splash-screen"]')).toHaveLength(0);
     });
     it('should render the the background', () => {
         const wrapper = setupTest();

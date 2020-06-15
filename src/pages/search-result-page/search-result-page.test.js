@@ -15,6 +15,11 @@ global.fetch = jest.fn().mockImplementation(() =>
     })
 );
 
+// global.sessionStorage = jest.fn().mockImplementation(() => ({
+//     isLoggedIn: true,
+//     lastSearch: `[{ gifUrl: 'test', gfyName: 'test', gfyId: 'test', title: 'test' }]`,
+// }));
+
 const setupTest = () =>
     mount(
         <UserContextProvider value={{ searchValue: 'test' }}>
@@ -23,6 +28,13 @@ const setupTest = () =>
     );
 
 describe('Search result page', () => {
+    beforeEach(() => {
+        global.sessionStorage.lastSearch = JSON.stringify([
+            { gifUrl: 'test', gfyName: 'test', gfyId: 'test', title: 'test' },
+            { gifUrl: 'test', gfyName: 'test', gfyId: 'testy', title: 'test' },
+        ]);
+    });
+
     it('render the page correctly', async () => {
         let wrapper;
 

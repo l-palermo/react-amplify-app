@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { HtmlWebpackLinkTypePlugin } = require('html-webpack-link-type-plugin');
 
 module.exports = function (webpackEnv) {
-
     const jsjsxRegex = /\.(js|jsx)$/;
     const cssRegex = /\.css$/;
     const cssModuleRegex = /\.module\.css$/;
@@ -95,7 +94,7 @@ module.exports = function (webpackEnv) {
             path: path.resolve(__dirname, 'dist'),
         },
         // enables source maps
-        devtool: webpackEnv ? 'source-map' : 'inline-source-map',
+        devtool: !webpackEnv ? 'inline-source-map' : false,
         devServer: {
             // allow refreshing page on a client route path, this is because the server doesn't know about the 'client side routes'
             historyApiFallback: true,

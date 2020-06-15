@@ -10,6 +10,7 @@ const SplashScreen = ({ duration }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsRendered(false);
+            sessionStorage.setItem('isLoggedIn', true);
         }, duration);
         return () => clearTimeout(timer);
     }, []);
