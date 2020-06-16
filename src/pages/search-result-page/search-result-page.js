@@ -21,7 +21,8 @@ const SearchResultPage = () => {
                 .catch((err) => err);
     }, [searchValue]);
 
-    const searchResult = !searchValue ? JSON.parse(sessionStorage.lastSearch) : gifs;
+    const searchResult =
+        !searchValue && sessionStorage.lastSearch ? JSON.parse(sessionStorage.lastSearch) : gifs;
 
     return (
         <Container dataId="search-result-page">

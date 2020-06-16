@@ -1,5 +1,6 @@
 import React from 'react';
-import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import { Switch, Router, Route } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
 import './styles.css';
 import SplashScreen from './components/splash-screen';
@@ -10,6 +11,8 @@ import Navbar from './components/navbar';
 import logOut from './helpers/user-log/log-out';
 import { UserContextProvider } from './helpers/user-context/user-context';
 
+const customHistory = createBrowserHistory();
+
 const App = () => {
     const isLoggedIn =
         sessionStorage.isLoggedIn && JSON.parse(sessionStorage.isLoggedIn)
@@ -18,16 +21,16 @@ const App = () => {
 
     return (
         <UserContextProvider>
-            <BrowserRouter>
+            <Router history={customHistory}>
                 {!isLoggedIn ? <SplashScreen /> : null}
                 <Background>
                     <Navbar logOut={logOut} />
                     <Switch>
                         <Route exact path="/" render={() => <HomePage />} />
-                        <Route exac path="/search" render={() => <SearchResult />} />
+                        <Route path="/search" render={() => <SearchResult />} />
                     </Switch>
                 </Background>
-            </BrowserRouter>
+            </Router>
         </UserContextProvider>
     );
 };

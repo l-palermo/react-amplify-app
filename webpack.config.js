@@ -17,7 +17,7 @@ module.exports = function (webpackEnv) {
         entry: './src/index.js',
         module: {
             rules: [
-                // js, jsx rules
+                // js, jsx rule
                 {
                     test: jsjsxRegex,
                     exclude: /node_modules/,
@@ -76,9 +76,6 @@ module.exports = function (webpackEnv) {
                         {
                             loader: '@svgr/webpack',
                             // loader: "svg-url-loader",
-                            options: {
-                                limit: 10000,
-                            },
                         },
                     ],
                 },
@@ -125,5 +122,11 @@ module.exports = function (webpackEnv) {
                 '**/*.css': 'text/css',
             }),
         ],
+        optimization: {
+            splitChunks: {
+                chunks: 'async',
+                minSize: 2000,
+            },
+        },
     };
 };
