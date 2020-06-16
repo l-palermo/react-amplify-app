@@ -10,13 +10,6 @@ import Navbar from './components/navbar';
 import logOut from './helpers/user-log/log-out';
 import { UserContextProvider } from './helpers/user-context/user-context';
 
-// import { Auth } from 'aws-amplify';
-
-// check which of these values stays
-// Auth.currentCredentials().then((data) => console.log(data));
-
-// Auth.currentUserCredentials().then((data) => console.log(data));
-
 const App = () => {
     const isLoggedIn =
         sessionStorage.isLoggedIn && JSON.parse(sessionStorage.isLoggedIn)
