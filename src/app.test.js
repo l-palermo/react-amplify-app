@@ -4,7 +4,7 @@ import App from './app';
 
 const setupTest = () => mount(<App />);
 
-const setSessionStorage = (bool) => (global.sessionStorage.isLoggedIn = JSON.stringify(bool));
+const setSessionStorage = (bool) => (global.sessionStorage.wasPlayed = JSON.stringify(bool));
 
 describe('App', () => {
     beforeEach(() => {
