@@ -11,21 +11,19 @@ const SearchResultPage = () => {
     const { searchValue } = useContext(UserContext);
 
     useEffect(() => {
-        fetch(GFYCATS_SEARCH_QS + searchValue + GFY_RESULT_COUNT)
-            .then((response) => response.json())
-            .then((data) => {
-                setGifs(data.gfycats);
-                sessionStorage.setItem('lastSearch', JSON.stringify(data.gfycats));
-            })
-            .catch((err) => err);
+        searchValue &&
+            fetch(GFYCATS_SEARCH_QS + searchValue + GFY_RESULT_COUNT)
+                .then((response) => response.json())
+                .then((data) => {
+                    setGifs(data.gfycats);
+                })
+                .catch((err) => err);
     }, [searchValue]);
-
-    const searchResult = !searchValue ? JSON.parse(sessionStorage.lastSearch) : gifs;
 
     return (
         <Container dataId="search-result-page">
             <CardsLayout dataId="search-result-cards-layout">
-                {searchResult.map((gif) => {
+                {gifs.map((gif) => {
                     const { gifUrl, gfyName, gfyId, title } = gif;
                     return <Card key={gfyId} imageUrl={gifUrl} title={title} imageAlt={gfyName} />;
                 })}

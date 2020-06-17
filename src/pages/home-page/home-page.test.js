@@ -4,19 +4,15 @@ import { act } from 'react-dom/test-utils';
 import HomePage from '.';
 import { UserContextProvider } from '../../helpers/user-context/user-context';
 
-const mockClipboard = {
-    writeText: jest.fn(),
-};
-
-global.navigator.clipboard = mockClipboard;
+const data = [
+    { gifUrl: 'https://banana.com', gfyName: 'test', gfyId: 'test id' },
+    { gifUrl: 'https://gif.com', gfyName: 'test next', gfyId: 'test ide' },
+];
 
 global.fetch = jest.fn().mockImplementation(() =>
     Promise.resolve({
         json: () => ({
-            gfycats: [
-                { gifUrl: 'https://banana.com', gfyName: 'test', gfyId: 'test id' },
-                { gifUrl: 'https://gif.com', gfyName: 'test next', gfyId: 'test ide' },
-            ],
+            gfycats: data,
         }),
     })
 );
