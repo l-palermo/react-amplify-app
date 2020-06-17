@@ -22,7 +22,6 @@ const App = () => {
                 {!isLoggedIn ? <SplashScreen /> : null}
                 <Background>
                     <Navbar logOut={logOut} />
-
                     <Route exact path="/" render={() => <HomePage />} />
                     <Route path="/search" render={() => <SearchResult />} />
                 </Background>
