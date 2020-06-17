@@ -92,20 +92,18 @@ module.exports = function (webpackEnv) {
         },
         // enables source maps
         devtool: !webpackEnv ? 'inline-source-map' : false,
-        devServer: !webpackEnv
-            ? {
-                  // allow refreshing page on a client route path, this is because the server doesn't know about the 'client side routes'
-                  historyApiFallback: true,
-                  // tells webpack where to take the content from
-                  contentBase: './dist',
-                  // needs to be specified ...?
-                  port: 8000,
-                  // compress the bundle
-                  compress: true,
-                  hot: true,
-                  // hotOnly: true,
-              }
-            : {},
+        devServer: {
+            // allow refreshing page on a client route path, this is because the server doesn't know about the 'client side routes'
+            historyApiFallback: true,
+            // tells webpack where to take the content from
+            contentBase: './dist',
+            // needs to be specified ...?
+            port: 8000,
+            // compress the bundle
+            compress: true,
+            hot: true,
+            // hotOnly: true,
+        },
         plugins: [
             // cleans the dist folder after the server run each time
             new CleanWebpackPlugin(),
