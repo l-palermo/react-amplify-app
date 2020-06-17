@@ -8,13 +8,13 @@ import Card from '../../components/card';
 const HomePage = () => {
     const [areGifsSaved, setAreGifsSaved] = useState(false);
     const gifsStorage = sessionStorage.gifs ? JSON.parse(sessionStorage.gifs) : [];
-    const isUserLoggedIn = sessionStorage.isLoggedIn
-        ? JSON.parse(sessionStorage.isLoggedIn)
-        : false;
+    // const isUserLoggedIn = sessionStorage.isLoggedIn
+    //     ? JSON.parse(sessionStorage.isLoggedIn)
+    //     : false;
 
     useEffect(() => {
-        !isUserLoggedIn &&
-            !areGifsSaved &&
+        // !isUserLoggedIn &&
+        !areGifsSaved &&
             fetch(GFY_TRENTING_QS)
                 .then((response) => response.json())
                 .then((data) => {

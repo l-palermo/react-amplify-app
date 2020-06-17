@@ -122,11 +122,5 @@ module.exports = function (webpackEnv) {
                 '**/*.css': 'text/css',
             }),
         ],
-        optimization: {
-            splitChunks: {
-                chunks: 'async',
-                minSize: 2000,
-            },
-        },
     };
 };

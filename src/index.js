@@ -6,4 +6,4 @@ import awsConfig from './aws-exports';
 
 Amplify.configure(awsConfig);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('home-page'));
