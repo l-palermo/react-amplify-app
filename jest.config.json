@@ -7,6 +7,7 @@
   "testEnvironment": "enzyme",
   "collectCoverageFrom": [
     "**/src/**",
+    "!**/src/graphql/**",
     "!**/aws-exports.js",
     "!**/withAuth.js",
     "!**/index.js",

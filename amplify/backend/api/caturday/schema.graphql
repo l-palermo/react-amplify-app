@@ -1,0 +1,17 @@
+type Collection @model @auth(rules: [{ allow: owner }]) {
+    id: ID!
+    name: String!
+    gifs: [Gif] @connection(keyName: "byCollection", fields: ["id"])
+}
+
+type Gif
+    @model
+    @auth(rules: [{ allow: owner }])
+    @key(name: "byCollection", fields: ["collectionID"]) {
+    id: ID!
+    title: String!
+    gifUrl: String!
+    gifName: String!
+    collectionID: ID!
+    collection: Collection @connection(fields: ["collectionID"])
+}
