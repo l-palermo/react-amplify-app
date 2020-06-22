@@ -4,19 +4,32 @@ import cx from 'classnames';
 
 import styles from './menu-item.module.css';
 
-const MenuItem = ({ Icon, onClick, hasMarginRight, hasCircle, name, isHeaderItem, dataId }) => {
+const MenuItem = ({
+    Icon,
+    onClick,
+    hasPaddingRight,
+    hasCircle,
+    name,
+    isHeaderItem,
+    dataId,
+    isAlignedLeft,
+    isAlignedRight,
+}) => {
     const [hasNameBox, setHasNameBox] = useState(false);
+
     return (
         <div
             data-qa="menu-item"
             data-id={dataId}
-            className={styles.menuItem}
+            className={cx(styles.menuItem, {
+                [styles.isOnHeader]: isHeaderItem,
+                [styles.paddingRight]: hasPaddingRight,
+            })}
             onMouseEnter={() => setHasNameBox(true)}
             onMouseLeave={() => setHasNameBox(false)}
         >
             <button
                 className={cx(styles.button, {
-                    [styles.marginRight]: hasMarginRight,
                     [styles.hasCircle]: hasCircle,
                     [styles.isHeaderItem]: isHeaderItem,
                 })}
@@ -31,6 +44,8 @@ const MenuItem = ({ Icon, onClick, hasMarginRight, hasCircle, name, isHeaderItem
                     className={cx({
                         [styles.nameBox]: !isHeaderItem,
                         [styles.titleBox]: isHeaderItem,
+                        [styles.alignRight]: isAlignedRight,
+                        [styles.alignLeft]: isAlignedLeft,
                     })}
                 >
                     <p className={styles.name}>{name}</p>
@@ -45,15 +60,19 @@ MenuItem.propTypes = {
     Icon: PropTypes.func.isRequired,
     onClick: PropTypes.func,
     name: PropTypes.string,
-    hasMarginRight: PropTypes.bool,
+    hasPaddingRight: PropTypes.bool,
     hasCircle: PropTypes.bool,
+    isAlignedLeft: PropTypes.bool,
+    isAlignedRight: PropTypes.bool,
     isHeaderItem: PropTypes.bool,
 };
 
 MenuItem.defaultProps = {
     dataId: '',
-    hasMarginRight: false,
+    hasPaddingRight: false,
     hasCircle: true,
+    isAlignedLeft: false,
+    isAlignedRight: false,
     isHeaderItem: false,
     name: '',
     onClick: undefined,

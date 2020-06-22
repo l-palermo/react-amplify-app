@@ -1,0 +1,11 @@
+:root {
+    --card-height: 18rem;
+    --image-border-radius: 1rem;
+}
+
+.collectionCard {
+    height: var(--card-height);
+    max-width: 100%;
+    display: flex;
+    background-color: white;
+}

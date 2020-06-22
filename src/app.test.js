@@ -1,6 +1,9 @@
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 
 import App from './app';
+
+jest.mock('../__mocks__/@aws-amplify/api');
 
 const setupTest = () => mount(<App />);
 
@@ -38,11 +41,20 @@ describe('App', () => {
 
         searchButton.find('button').simulate('click');
 
-        const searchInput = wrapper.find('[data-qa="search-input"] input');
+        const searchInput = wrapper.find('[data-qa="input-field"] input');
 
         searchInput.simulate('change', { target: { value: 'this is a test' } });
         searchInput.simulate('keypress', { key: 'Enter' });
 
         expect(wrapper.find('[data-id="search-result-page"]')).toHaveLength(1);
+    });
+    it('should render the collection page', async () => {
+        const wrapper = setupTest();
+        const collectionButton = wrapper.find('[data-id="collection-button"]');
+
+        await act(async () => collectionButton.find('button').simulate('click'));
+        wrapper.update();
+
+        expect(wrapper.find('[data-id="collections-page"]')).toHaveLength(1);
     });
 });

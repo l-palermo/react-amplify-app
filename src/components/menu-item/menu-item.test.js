@@ -36,9 +36,9 @@ describe('MenuItem', () => {
             const wrapper = setupTest({ hasCircle: true });
             expect(wrapper.find('button')).toHaveClassName('button hasCircle');
         });
-        it('should render an icon with a right margin', () => {
-            const wrapper = setupTest({ hasMarginRight: true });
-            expect(wrapper.find('button')).toHaveClassName('button marginRight');
+        it('should render an icon with a right padding', () => {
+            const wrapper = setupTest({ hasPaddingRight: true });
+            expect(wrapper.find('[data-qa="menu-item"]')).toHaveClassName('menuItem paddingRight');
         });
         it('should render a data-id attribute', () => {
             const wrapper = setupTest({ dataId: 'test' });

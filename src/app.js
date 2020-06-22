@@ -5,6 +5,7 @@ import './styles.css';
 import SplashScreen from './components/splash-screen';
 import HomePage from './pages/home-page';
 import SearchResult from './pages/search-result-page';
+import CollectionsPage from './pages/collections/collections-page';
 import Background from './components/background';
 import Navbar from './components/navbar';
 import logOut from './helpers/user-log/log-out';
@@ -24,6 +25,7 @@ const App = () => {
                     <Navbar logOut={logOut} />
                     <Route exact path="/" render={() => <HomePage />} />
                     <Route path="/search" render={() => <SearchResult />} />
+                    <Route path="/collections" render={() => <CollectionsPage />} />
                 </Background>
             </BrowserRouter>
         </UserContextProvider>

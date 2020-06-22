@@ -7,13 +7,41 @@ It uses AWS Amplify for user authentication, securely store data and user metada
 
 The goal is to add a database and allow the users to create their own gif collection.
 
+---
 
 `Todos:
 Create a GitHub packages repo and migrate app components.
-Refactor components to be context agnostic
+Refactor components to be context agnostic - `Some`
 Homepage label when hover logo link
-Review test and code structure
+Review test and code structure - `Some`
 Add message as verification method`
+
+---
+
+The user will:
+
+* Add gif to a specific collection
+* Delete gif from a specific collection
+* See a confirmation message before delete
+* Ensure there are no duplicates in each collection
+* Search for gifs inside a collection
+
+Maybe, the user will:
+
+* add its own gifs to collections
+
+The user can:
+
+* Sign up, Log in, Log out
+* See an exciting splash screen when it first logs in
+* See an exciting collection of gifs on the home page
+* Search new gifs by keywords
+* Copy card URL to send it to his friends both homepage and search
+* See the card title, both home page and search
+* Navigate to collection page
+* Add Delete collections
+
+---
 
 ### Project setup and dependencies:
 

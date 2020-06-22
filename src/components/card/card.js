@@ -30,6 +30,8 @@ const Card = ({ imageUrl, imageAlt, dataId, title }) => {
                     dataId="card-copy-button"
                     Icon={isCopied ? checkIcon : copyIcon}
                     onClick={copytoClipboard}
+                    name="Copy"
+                    hasPaddingRight
                     isHeaderItem
                 />
                 <MenuItem
@@ -37,7 +39,7 @@ const Card = ({ imageUrl, imageAlt, dataId, title }) => {
                     Icon={textIcon}
                     name={title}
                     isHeaderItem
-                    hasMarginRight
+                    hasPaddingRight
                 />
             </div>
         </div>
