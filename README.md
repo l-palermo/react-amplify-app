@@ -21,8 +21,8 @@ Add message as verification method`
 
 The user will:
 
-* Add gif to a specific collection
-* Delete gif from a specific collection
+* Add gif to a specific collection - Done
+* Delete gif from a specific collection  - Done
 * See a confirmation message before delete
 * Ensure there are no duplicates in each collection
 * Search for gifs inside a collection

@@ -2,7 +2,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
 import Navbar from '.';
-import { UserContextProvider } from '../../helpers/user-context/user-context';
+import { UserContextProvider } from '../../../helpers/user-context/user-context';
 
 const requiredProps = {
     logOut: jest.fn(),
