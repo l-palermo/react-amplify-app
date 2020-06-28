@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
 import styles from './navbar.module.css';
-import Container from '../container';
-import InputField from '../../components/input-field';
-import MenuItem from '../menu-item';
-import Logo from '../logo';
-import LogOutIcon from '../../assets/log-out/log-out.svg';
-import CollectionIcon from '../../assets/collection/collection.svg';
-import SearchIcon from '../../assets/search/search.svg';
-import ArrowRightIcon from '../../assets/arrow-right/arrow-right.svg';
-import { UserContext } from '../../helpers/user-context/user-context';
+import Container from '../../../components/container';
+import InputField from '../../../components/input-field';
+import MenuItem from '../../../components/menu-item';
+import Logo from '../../../components/logo';
+import LogOutIcon from '../../../assets/log-out/log-out.svg';
+import CollectionIcon from '../../../assets/collection/collection.svg';
+import SearchIcon from '../../../assets/search/search.svg';
+import ArrowRightIcon from '../../../assets/arrow-right/arrow-right.svg';
+import { UserContext } from '../../../helpers/user-context/user-context';
 
 const Navbar = ({ logOut }) => {
     const history = useHistory();

@@ -15,6 +15,7 @@
 }
 
 .layout {
+    margin-top: 3rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--collection-cell-width), 100%));
     grid-gap: 1rem;

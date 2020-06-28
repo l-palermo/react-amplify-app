@@ -7,8 +7,8 @@ import HomePage from './pages/home-page';
 import SearchResult from './pages/search-result-page';
 import CollectionsPage from './pages/collections-page/collections-page';
 import CollectionPage from './pages/collection-page/collection-page';
-import Background from './components/background';
-import Navbar from './components/navbar';
+import Background from './pages/shared-components/background';
+import Navbar from './pages/shared-components/navbar';
 import logOut from './helpers/user-log/log-out';
 import { UserContextProvider } from './helpers/user-context/user-context';
 

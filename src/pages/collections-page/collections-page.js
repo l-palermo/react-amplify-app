@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import styles from './collections-page.module.css';
 import Container from '../../components/container';
-import CardsLayout from '../../components/cards-layout';
 import CollectionCard from '../../components/collection-card';
 import AddIcon from '../../assets/add/add.svg';
 import AddCollectionIcon from '../../assets/add-collection/add-collection.svg';
@@ -64,32 +63,30 @@ const CollectionsPage = () => {
                     />
                 )}
             </div>
-            <CardsLayout dataId="collections-page-cards-layout">
-                <div className={styles.layout}>
-                    {collections.map(({ id, name }) => {
-                        const path = `/collections/${id}`;
-                        return (
-                            <CollectionCard
-                                key={id}
-                                path={path}
-                                collectionId={id}
-                                name={name}
-                                headerItems={
-                                    <MenuItem
-                                        dataId="delete-button"
-                                        Icon={TrashIcon}
-                                        name="Delete"
-                                        isHeaderItem
-                                        hasPaddingRight
-                                        isInverted
-                                        onClick={() => onDelete(id)}
-                                    />
-                                }
-                            />
-                        );
-                    })}
-                </div>
-            </CardsLayout>
+            <div data-qa="collections-page-cards-layout" className={styles.layout}>
+                {collections.map(({ id, name }) => {
+                    const path = `/collections/${id}`;
+                    return (
+                        <CollectionCard
+                            key={id}
+                            path={path}
+                            collectionId={id}
+                            name={name}
+                            headerItems={
+                                <MenuItem
+                                    dataId="delete-button"
+                                    Icon={TrashIcon}
+                                    name="Delete"
+                                    isHeaderItem
+                                    hasPaddingRight
+                                    isInverted
+                                    onClick={() => onDelete(id)}
+                                />
+                            }
+                        />
+                    );
+                })}
+            </div>
         </Container>
     );
 };
