@@ -1,0 +1,11 @@
+.dropdownItem {
+    border: none;
+    background-color: white;
+    border-radius: 0.25rem;
+    margin-bottom: 2px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: lightgrey;
+    }
+}

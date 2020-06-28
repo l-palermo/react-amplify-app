@@ -84,7 +84,7 @@ describe('Navbar', () => {
     });
     it('should route the user to the collection page', () => {
         const wrapper = setupTest();
-        wrapper.find('[data-id="collection-button"] button').simulate('click');
+        wrapper.find('[data-id="collections-button"] button').simulate('click');
 
         const routerHistory = wrapper.find('Router').prop('history');
         expect(routerHistory.action).toEqual('PUSH');

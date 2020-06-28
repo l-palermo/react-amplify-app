@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 
 import Container from '../../components/container';
 import CardsLayout from '../../components/cards-layout';
-import Card from '../../components/card';
+import CardWithHeader from '../shared-components/card-with-header';
 import { UserContext } from '../../helpers/user-context/user-context';
 import { GFYCATS_SEARCH_QS, GFY_RESULT_COUNT } from './constants';
 
@@ -25,7 +25,15 @@ const SearchResultPage = () => {
             <CardsLayout dataId="search-result-cards-layout">
                 {gifs.map((gif) => {
                     const { gifUrl, gfyName, gfyId, title } = gif;
-                    return <Card key={gfyId} imageUrl={gifUrl} title={title} imageAlt={gfyName} />;
+                    return (
+                        <CardWithHeader
+                            isAdd
+                            key={gfyId}
+                            imageUrl={gifUrl}
+                            title={title}
+                            imageAlt={gfyName}
+                        />
+                    );
                 })}
             </CardsLayout>
         </Container>

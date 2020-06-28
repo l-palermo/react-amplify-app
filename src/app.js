@@ -1,11 +1,12 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './styles.css';
 import SplashScreen from './components/splash-screen';
 import HomePage from './pages/home-page';
 import SearchResult from './pages/search-result-page';
-import CollectionsPage from './pages/collections/collections-page';
+import CollectionsPage from './pages/collections-page/collections-page';
+import CollectionPage from './pages/collection-page/collection-page';
 import Background from './components/background';
 import Navbar from './components/navbar';
 import logOut from './helpers/user-log/log-out';
@@ -23,9 +24,18 @@ const App = () => {
                 {!wasPlayed ? <SplashScreen /> : null}
                 <Background>
                     <Navbar logOut={logOut} />
-                    <Route exact path="/" render={() => <HomePage />} />
-                    <Route path="/search" render={() => <SearchResult />} />
-                    <Route path="/collections" render={() => <CollectionsPage />} />
+                    <Switch>
+                        <Route exact path="/" render={() => <HomePage />} />
+                        <Route path="/search" render={() => <SearchResult />} />
+                        <Route exact path="/collections" render={() => <CollectionsPage />} />
+                        <Route
+                            exact
+                            path="/collections/:collectionId"
+                            render={({ match }) => (
+                                <CollectionPage collectionId={match.params.collectionId} />
+                            )}
+                        />
+                    </Switch>
                 </Background>
             </BrowserRouter>
         </UserContextProvider>

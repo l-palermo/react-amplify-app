@@ -7,6 +7,7 @@ const SplashScreen = ({ duration }) => {
     const [isRendered, setIsRendered] = useState(true);
     const fadeInDuration = duration * 0.7;
     const fadeOutDuration = duration * 0.4;
+
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsRendered(false);

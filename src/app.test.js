@@ -3,8 +3,6 @@ import { act } from 'react-dom/test-utils';
 
 import App from './app';
 
-jest.mock('../__mocks__/@aws-amplify/api');
-
 const setupTest = () => mount(<App />);
 
 const setSessionStorage = (bool) => (global.sessionStorage.wasPlayed = JSON.stringify(bool));
@@ -33,7 +31,7 @@ describe('App', () => {
     });
     it('should render the home page', () => {
         const wrapper = setupTest();
-        expect(wrapper.find('[data-qa="home-page"]')).toHaveLength(1);
+        expect(wrapper.find('[data-id="home-page"]')).toHaveLength(1);
     });
     it('should render the search result page', () => {
         const wrapper = setupTest();
@@ -48,13 +46,29 @@ describe('App', () => {
 
         expect(wrapper.find('[data-id="search-result-page"]')).toHaveLength(1);
     });
-    it('should render the collection page', async () => {
+    it('should render the collections page', async () => {
         const wrapper = setupTest();
-        const collectionButton = wrapper.find('[data-id="collection-button"]');
+        const collectionButton = wrapper.find('[data-id="collections-button"]');
 
         await act(async () => collectionButton.find('button').simulate('click'));
         wrapper.update();
 
         expect(wrapper.find('[data-id="collections-page"]')).toHaveLength(1);
+    });
+    it('should render the collection page', async () => {
+        const wrapper = setupTest();
+        const collectionButton = wrapper.find('[data-id="collections-button"]');
+
+        await act(async () => collectionButton.find('button').simulate('click'));
+        wrapper.update();
+
+        const card = wrapper.find('[data-qa="collection-card"]').at(0);
+        await act(async () => card.find('a').simulate('click', { button: 0 }));
+
+        wrapper.update();
+
+        card.find('a').simulate('click', { button: 0 });
+
+        expect(wrapper.find('[data-id="collection-page"]')).toHaveLength(1);
     });
 });

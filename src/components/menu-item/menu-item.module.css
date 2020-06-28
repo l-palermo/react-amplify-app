@@ -101,10 +101,13 @@
 }
 
 .titleBox {
+    position: absolute;
+    transform: translate(2rem, 0);
     background-color: rgba(0, 0, 0, 0.575);
     color: white;
     padding: var(--spacing-xxs) var(--spacing-xs);
     border-radius: var(--spacing-xxs);
     height: fit-content;
     max-width: var(--spacing-xxxxl);
+    width: max-content;
 }

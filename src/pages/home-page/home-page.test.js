@@ -5,8 +5,8 @@ import HomePage from '.';
 import { UserContextProvider } from '../../helpers/user-context/user-context';
 
 const data = [
-    { gifUrl: 'https://banana.com', gfyName: 'test', gfyId: 'test id' },
-    { gifUrl: 'https://gif.com', gfyName: 'test next', gfyId: 'test ide' },
+    { gifUrl: 'https://banana.com', gfyName: 'test', gfyId: 'test id', title: 'test' },
+    { gifUrl: 'https://gif.com', gfyName: 'test next', gfyId: 'test ide', title: 'test' },
 ];
 
 global.fetch = jest.fn().mockImplementation(() =>
@@ -36,8 +36,8 @@ describe('HomePage', () => {
         });
         wrapper.update();
 
-        expect(wrapper.find('[data-qa="home-page"]')).toHaveLength(1);
+        expect(wrapper.find('[data-id="home-page"]')).toHaveLength(1);
         expect(wrapper.find('CardsLayout [data-id="home-page-cards-layout"]')).toHaveLength(1);
-        expect(wrapper.find('CardsLayout [data-qa="card"]')).toHaveLength(2);
+        expect(wrapper.find('CardsLayout [data-id="home-page-card-with-header"]')).toHaveLength(2);
     });
 });

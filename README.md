@@ -10,6 +10,7 @@ The goal is to add a database and allow the users to create their own gif collec
 ---
 
 `Todos:
+ACCESSIBILITY
 Create a GitHub packages repo and migrate app components.
 Refactor components to be context agnostic - `Some`
 Homepage label when hover logo link

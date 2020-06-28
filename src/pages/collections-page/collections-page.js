@@ -6,35 +6,33 @@ import CardsLayout from '../../components/cards-layout';
 import CollectionCard from '../../components/collection-card';
 import AddIcon from '../../assets/add/add.svg';
 import AddCollectionIcon from '../../assets/add-collection/add-collection.svg';
+import TrashIcon from '../../assets/trash/trash.svg';
 import MenuItem from '../../components/menu-item';
 import InputField from '../../components/input-field';
 import {
     collectionList,
     collectionCreate,
     collectionDelete,
-} from './helpers/queries/collection-queries';
-
-// Auth.currentAuthenticatedUser().then((data) => console.log(data));
+} from './lib/queries/collection-queries';
 
 const CollectionsPage = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [collectionName, setCollectionName] = useState('');
     const [collections, setCollections] = useState([]);
 
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-            collectionCreate(collectionName, collectionList, setCollections);
-            setCollectionName('');
-        }
+    const createCollection = async () => {
+        await collectionCreate(collectionName);
+        setCollectionName('');
+        collectionList().then((data) => setCollections(data));
     };
 
-    const handleClick = () => {
-        collectionCreate(collectionName, collectionList, setCollections);
-        setCollectionName('');
+    const onDelete = async (id) => {
+        await collectionDelete(id);
+        collectionList().then((data) => setCollections(data));
     };
 
     useEffect(() => {
-        collectionList(setCollections);
+        collectionList().then((data) => setCollections(data));
     }, []);
 
     return (
@@ -53,28 +51,44 @@ const CollectionsPage = () => {
                         placeholder="Collection name..."
                         value={collectionName}
                         onChange={setCollectionName}
-                        onKeyPress={handleKeyPress}
+                        onKeyPress={(e) => e.key === 'Enter' && createCollection()}
                         ButtonIcon={
                             <MenuItem
                                 dataId="arrow-close-button"
                                 Icon={AddIcon}
                                 name="Add"
                                 hasCircle={false}
-                                onClick={handleClick}
+                                onClick={createCollection}
                             />
                         }
                     />
                 )}
             </div>
             <CardsLayout dataId="collections-page-cards-layout">
-                {collections.map(({ id }) => {
-                    return (
-                        <CollectionCard
-                            key={id}
-                            onClick={() => collectionDelete(id, collectionList, setCollections)}
-                        />
-                    );
-                })}
+                <div className={styles.layout}>
+                    {collections.map(({ id, name }) => {
+                        const path = `/collections/${id}`;
+                        return (
+                            <CollectionCard
+                                key={id}
+                                path={path}
+                                collectionId={id}
+                                name={name}
+                                headerItems={
+                                    <MenuItem
+                                        dataId="delete-button"
+                                        Icon={TrashIcon}
+                                        name="Delete"
+                                        isHeaderItem
+                                        hasPaddingRight
+                                        isInverted
+                                        onClick={() => onDelete(id)}
+                                    />
+                                }
+                            />
+                        );
+                    })}
+                </div>
             </CardsLayout>
         </Container>
     );

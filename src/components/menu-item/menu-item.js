@@ -57,14 +57,14 @@ const MenuItem = ({
 
 MenuItem.propTypes = {
     dataId: PropTypes.string,
-    Icon: PropTypes.func.isRequired,
-    onClick: PropTypes.func,
-    name: PropTypes.string,
     hasPaddingRight: PropTypes.bool,
     hasCircle: PropTypes.bool,
     isAlignedLeft: PropTypes.bool,
     isAlignedRight: PropTypes.bool,
+    Icon: PropTypes.func.isRequired,
     isHeaderItem: PropTypes.bool,
+    name: PropTypes.string,
+    onClick: PropTypes.func,
 };
 
 MenuItem.defaultProps = {

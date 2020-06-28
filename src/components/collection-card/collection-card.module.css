@@ -3,9 +3,31 @@
     --image-border-radius: 1rem;
 }
 
-.collectionCard {
+.link {
+    text-decoration: none;
+}
+
+.headerContent {
+    position: absolute;
+    padding: 1rem;
+    z-index: 1;
+}
+
+.name {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    font-size: 3rem;
+    background-color: white;
+    color: black;
+    mix-blend-mode: screen;
+    border-radius: var(--image-border-radius);
+    font-weight: bolder;
     height: var(--card-height);
     max-width: 100%;
-    display: flex;
-    background-color: white;
+
+    &:hover {
+        mix-blend-mode: normal;
+    }
 }

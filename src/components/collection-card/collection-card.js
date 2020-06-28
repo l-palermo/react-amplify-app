@@ -4,27 +4,28 @@ import { Link } from 'react-router-dom';
 
 import styles from './collection-card.module.css';
 
-const CollectionCard = ({ dataId, onClick }) => {
-    const collectionName = 'reactions';
-    const path = `/collection/${collectionName}`;
-
+const CollectionCard = ({ dataId, onClick, path, name, headerItems }) => {
     return (
-        <div className={styles.collectionCard} data-qa="collection-card" data-id={dataId}>
-            <button data-id="delete-button" type="button" onClick={onClick}>
-                {'Delete'}
-            </button>
-            <Link to={path}>Collection</Link>
+        <div data-qa="collection-card" data-id={dataId}>
+            <div className={styles.headerContent}>{headerItems}</div>
+            <Link className={styles.link} to={path} onClick={onClick}>
+                <div className={styles.name}>{name}</div>
+            </Link>
         </div>
     );
 };
 
 CollectionCard.propTypes = {
     dataId: PropTypes.string,
+    headerItems: PropTypes.node,
+    name: PropTypes.string.isRequired,
     onClick: PropTypes.func,
+    path: PropTypes.string.isRequired,
 };
 
 CollectionCard.defaultProps = {
     dataId: '',
+    headerItems: undefined,
 };
 
 export default CollectionCard;

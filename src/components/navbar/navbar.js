@@ -60,7 +60,7 @@ const Navbar = ({ logOut }) => {
                             />
                         )}
                         <MenuItem
-                            dataId="collection-button"
+                            dataId="collections-button"
                             Icon={CollectionIcon}
                             name="Collections"
                             hasPaddingRight

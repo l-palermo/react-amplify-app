@@ -1,11 +1,11 @@
 :root {
-    --card-height: 18rem;
+    --cell-width: 17rem;
 }
 
 .cardsLayout {
     margin-top: 3rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--card-height), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(var(--cell-width), 1fr));
     grid-gap: 1rem;
     overflow: hidden;
 }

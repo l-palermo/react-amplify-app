@@ -5,8 +5,8 @@ import SearchResultPage from './search-result-page';
 import { UserContext } from '../../helpers/user-context/user-context';
 
 const data = [
-    { gifUrl: 'https://banana.com', gfyName: 'test', gfyId: 'test id' },
-    { gifUrl: 'https://gif.com', gfyName: 'test next', gfyId: 'test ide' },
+    { gifUrl: 'https://banana.com', gfyName: 'test', gfyId: 'test id', title: 'test' },
+    { gifUrl: 'https://gif.com', gfyName: 'test next', gfyId: 'test ide', title: 'test' },
 ];
 
 global.fetch = jest.fn().mockImplementation(() =>

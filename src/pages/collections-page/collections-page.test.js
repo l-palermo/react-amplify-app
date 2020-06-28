@@ -4,8 +4,6 @@ import { act } from 'react-dom/test-utils';
 
 import CollectionsPage from './collections-page';
 
-jest.mock('../../../__mocks__/@aws-amplify/api');
-
 const setupTest = () =>
     mount(
         <MemoryRouter>
@@ -21,13 +19,13 @@ describe('Collection page', () => {
 
         expect(wrapper.find('[data-id="collections-page"]')).toHaveLength(1);
     });
-    it('should render the add collection button', async () => {
+    it('should render the "add collection" button', async () => {
         let wrapper;
         await act(async () => (wrapper = setupTest()));
         wrapper.update();
         expect(wrapper.find('[data-id="add-collection-button"]')).toHaveLength(1);
     });
-    it('should render the colletions correctly', async () => {
+    it('should render the collections correctly', async () => {
         let wrapper;
         await act(async () => (wrapper = setupTest()));
         wrapper.update();
@@ -35,7 +33,7 @@ describe('Collection page', () => {
         expect(wrapper.find('[data-qa="collection-card"]')).toHaveLength(2);
     });
     describe('Actions', () => {
-        it('should render the input field when add collection button is clicked', async () => {
+        it('should render the input field when "add collection" button is clicked', async () => {
             let wrapper;
             await act(async () => (wrapper = setupTest()));
             wrapper.update();
@@ -59,7 +57,7 @@ describe('Collection page', () => {
             await act(async () => input.simulate('keypress', { key: 'Enter' }));
             wrapper.update();
 
-            // mock the data base
+            // mock the database
         });
         it('shoudl not add a collection if a different key other than enter is pressed', async () => {
             let wrapper;
@@ -97,7 +95,7 @@ describe('Collection page', () => {
             wrapper.update();
 
             const card = wrapper.find('[data-qa="collection-card"]').at(0);
-            const button = card.find('[data-id="delete-button"]');
+            const button = card.find('[data-id="delete-button"] button');
             await act(async () => button.simulate('click'));
             wrapper.update();
 
