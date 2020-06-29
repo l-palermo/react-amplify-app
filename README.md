@@ -1,4 +1,4 @@
-# react-amplify-app / CATURDAY
+# CATURDAY
 
 Deployed at: https://master.d3q12s0gysig02.amplifyapp.com/
 
