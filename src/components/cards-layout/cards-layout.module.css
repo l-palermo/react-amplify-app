@@ -3,9 +3,9 @@
 }
 
 .cardsLayout {
-    margin-top: 3rem;
+    margin-top: var(--spacing-xl);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--cell-width), 1fr));
-    grid-gap: 1rem;
+    grid-gap: var(--spacing-m);
     overflow: hidden;
 }

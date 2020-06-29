@@ -1,6 +1,6 @@
 :root {
     --card-height: 18rem;
-    --image-border-radius: 1rem;
+    --card-border-radius: 1rem;
 }
 
 .link {
@@ -9,7 +9,7 @@
 
 .headerContent {
     position: absolute;
-    padding: 1rem;
+    padding: var(--spacing-m);
     z-index: 1;
 }
 
@@ -22,7 +22,7 @@
     background-color: white;
     color: black;
     mix-blend-mode: screen;
-    border-radius: var(--image-border-radius);
+    border-radius: var(--card-border-radius);
     font-weight: bolder;
     height: var(--card-height);
     max-width: 100%;
