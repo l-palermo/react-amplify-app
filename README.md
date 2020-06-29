@@ -10,19 +10,17 @@ The goal is to add a database and allow the users to create their own gif collec
 ---
 
 `Todos:
-ACCESSIBILITY
-Create a GitHub packages repo and migrate app components.
-Refactor components to be context agnostic - `Some`
-Homepage label when hover logo link
-Review test and code structure - `Some`
-Add message as verification method`
+Refactor database queries to catch error and adjust test`<br>
+`ACCESSIBILITY`<br>
+`Create a GitHub packages repo and migrate app components`<br>
+`Refactor components to be context agnostic - Almost done`<br>
+`Review test and code structure - Some`<br>
+`Add message as sign up verification method`<br>
 
 ---
 
 The user will:
 
-* Add gif to a specific collection - Done
-* Delete gif from a specific collection  - Done
 * See a confirmation message before delete
 * Ensure there are no duplicates in each collection
 * Search for gifs inside a collection
@@ -41,6 +39,8 @@ The user can:
 * See the card title, both home page and search
 * Navigate to collection page
 * Add Delete collections
+* Add gif to a specific collection
+* Delete gif from a specific collection
 
 ---
 
@@ -155,3 +155,13 @@ At the moment css module is not in use.
     * postcss-nested
     * stylelint
     * stylelint-config-standard
+---
+
+<h4>Add Amplify GraphQL based on DynamoDB</h4>
+
+to add GraphQL and DynamoDB
+* run `amplify add api`
+
+to mock DB during dev
+* run `amplify mock api`
+
