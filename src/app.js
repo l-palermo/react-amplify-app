@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './styles.css';
 import SplashScreen from './components/splash-screen';
 import HomePage from './pages/home-page';
-import SearchResult from './pages/search-result-page';
+import SearchPage from './pages/search-page';
 import CollectionsPage from './pages/collections-page/collections-page';
 import CollectionPage from './pages/collection-page/collection-page';
 import Background from './pages/shared-components/background';
@@ -26,13 +26,16 @@ const App = () => {
                     <Navbar logOut={logOut} />
                     <Switch>
                         <Route exact path="/" render={() => <HomePage />} />
-                        <Route path="/search" render={() => <SearchResult />} />
+                        <Route path="/search" render={() => <SearchPage />} />
                         <Route exact path="/collections" render={() => <CollectionsPage />} />
                         <Route
                             exact
-                            path="/collections/:collectionId"
+                            path="/collections/:collectionId/:collectionName"
                             render={({ match }) => (
-                                <CollectionPage collectionId={match.params.collectionId} />
+                                <CollectionPage
+                                    collectionId={match.params.collectionId}
+                                    collectionName={match.params.collectionName}
+                                />
                             )}
                         />
                     </Switch>

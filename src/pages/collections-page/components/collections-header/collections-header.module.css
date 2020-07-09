@@ -1,0 +1,5 @@
+.collectionsHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+}

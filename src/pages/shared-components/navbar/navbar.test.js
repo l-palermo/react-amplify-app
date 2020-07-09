@@ -42,46 +42,6 @@ describe('Navbar', () => {
             expect(button).toHaveProp('name', buttonNames[index].name);
         });
     });
-    it('should open the input field when the search button is clicked', () => {
-        const wrapper = setupTest();
-        wrapper.find('[data-id="search-button"] button').simulate('click');
-
-        expect(wrapper.find('[data-qa="input-field"]')).toHaveLength(1);
-    });
-    it('should return to the menu item button when the arrow is clicked', () => {
-        const wrapper = setupTest();
-        wrapper.find('[data-id="search-button"] button').simulate('click');
-
-        const arrowClose = wrapper.find('[data-id="arrow-close-button"]');
-        expect(arrowClose).toHaveLength(1);
-
-        arrowClose.find('button').simulate('click');
-        expect(wrapper.find('[data-id="search-button"]')).toHaveLength(1);
-    });
-    it('should take the user input correctly', () => {
-        const wrapper = setupTest();
-
-        wrapper.find('[data-id="search-button"] button').simulate('click');
-
-        const input = wrapper.find('[data-qa="input-field"] input');
-        input.simulate('change', { target: { value: 'this is a test' } });
-
-        expect(wrapper.find('[data-qa="input-field"] input')).toHaveProp('value', 'this is a test');
-    });
-    it('should not fire the search if a different key instaed of Enter is pressed', () => {
-        const wrapper = setupTest();
-
-        wrapper.find('[data-id="search-button"] button').simulate('click');
-
-        const input = wrapper.find('[data-qa="input-field"] input');
-        input.simulate('change', { target: { value: 'this is a test' } });
-
-        expect(wrapper.find('[data-qa="input-field"] input')).toHaveProp('value', 'this is a test');
-
-        wrapper.find('input').simulate('keypress', { key: 'Up' });
-
-        expect(wrapper.find('input')).not.toHaveProp('value', '');
-    });
     it('should route the user to the collection page', () => {
         const wrapper = setupTest();
         wrapper.find('[data-id="collections-button"] button').simulate('click');

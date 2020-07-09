@@ -82,6 +82,14 @@ module.exports = function (webpackEnv) {
                         },
                     ],
                 },
+                {
+                    test: /\.(png|jpe?g|gif)$/i,
+                    use: [
+                        {
+                            loader: 'file-loader',
+                        },
+                    ],
+                },
             ],
         },
         resolve: {

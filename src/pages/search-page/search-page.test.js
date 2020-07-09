@@ -1,12 +1,24 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
-import SearchResultPage from './search-result-page';
+import SearchResultPage from './search-page';
 import { UserContext } from '../../helpers/user-context/user-context';
 
 const data = [
-    { gifUrl: 'https://banana.com', gfyName: 'test', gfyId: 'test id', title: 'test' },
-    { gifUrl: 'https://gif.com', gfyName: 'test next', gfyId: 'test ide', title: 'test' },
+    {
+        webpUrl: 'https://banana.com',
+        gfyName: 'test',
+        gfyId: 'test id',
+        title: 'test',
+        gif100px: 'url',
+    },
+    {
+        webpUrl: 'https://gif.com',
+        gfyName: 'test next',
+        gfyId: 'test ide',
+        title: 'test',
+        gif100px: 'url',
+    },
 ];
 
 global.fetch = jest.fn().mockImplementation(() =>
@@ -36,8 +48,8 @@ describe('Search result page', () => {
         });
         wrapper.update();
 
-        expect(wrapper.find('Container [data-id="search-result-page"]')).toHaveLength(1);
-        expect(wrapper.find('CardsLayout [data-id="search-result-cards-layout"]')).toHaveLength(1);
+        expect(wrapper.find('Container [data-id="search-page"]')).toHaveLength(1);
+        expect(wrapper.find('CardsLayout [data-id="search-page-cards-layout"]')).toHaveLength(1);
         expect(wrapper.find('CardsLayout [className="card"]')).toHaveLength(2);
 
         wrapper.find('CardsLayout [className="card"]').forEach((item, index) => {

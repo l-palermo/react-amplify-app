@@ -3,10 +3,9 @@ import { act } from 'react-dom/test-utils';
 
 import CollectionPage from '.';
 
-// jest.mock('./lib/queries/gif-queries');
-
 const requiredProps = {
-    collectionId: 'test',
+    collectionId: 'id-test',
+    collectionName: 'test',
 };
 
 const setupTest = () => mount(<CollectionPage {...requiredProps} />);

@@ -21,13 +21,14 @@ const CardWithHeader = ({
     title,
     gifId,
     onDelete,
+    copyUrl,
 }) => {
     const [isCopied, setIsCopied] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const [items, setItems] = useState([]);
 
     const copytoClipboard = () => {
-        navigator.clipboard.writeText(imageUrl);
+        navigator.clipboard.writeText(copyUrl);
         setIsCopied(true);
     };
 
@@ -91,6 +92,7 @@ const CardWithHeader = ({
                             gifUrl: imageUrl,
                             gifName: imageAlt,
                             collectionID: id,
+                            copyUrl: copyUrl,
                         };
                         return (
                             <DropdownList.Item
@@ -111,6 +113,7 @@ const CardWithHeader = ({
 
 CardWithHeader.propTypes = {
     dataId: PropTypes.string,
+    copyUrl: PropTypes.string.isRequired,
     gifId: PropTypes.string,
     imageUrl: PropTypes.string.isRequired,
     imageAlt: PropTypes.string.isRequired,

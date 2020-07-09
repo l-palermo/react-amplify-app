@@ -39,6 +39,7 @@ export const getGif = /* GraphQL */ `
       id
       title
       gifUrl
+      copyUrl
       gifName
       collectionID
       collection {
@@ -65,6 +66,7 @@ export const listGifs = /* GraphQL */ `
         id
         title
         gifUrl
+        copyUrl
         gifName
         collectionID
         createdAt

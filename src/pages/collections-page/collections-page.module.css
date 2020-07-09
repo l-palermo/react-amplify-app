@@ -2,11 +2,6 @@
     --collection-cell-width: 16.5rem;
 }
 
-.collectionHeader {
-    display: flex;
-    align-items: center;
-}
-
 .text {
     color: white;
     font-weight: 400;
@@ -15,7 +10,7 @@
 }
 
 .layout {
-    margin-top: var(--spacing-xl);
+    margin-top: var(--spacing-l);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--collection-cell-width), 100%));
     grid-gap: 1rem;

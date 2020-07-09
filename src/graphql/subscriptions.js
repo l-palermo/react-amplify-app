@@ -49,6 +49,7 @@ export const onCreateGif = /* GraphQL */ `
       id
       title
       gifUrl
+      copyUrl
       gifName
       collectionID
       collection {
@@ -70,6 +71,7 @@ export const onUpdateGif = /* GraphQL */ `
       id
       title
       gifUrl
+      copyUrl
       gifName
       collectionID
       collection {
@@ -91,6 +93,7 @@ export const onDeleteGif = /* GraphQL */ `
       id
       title
       gifUrl
+      copyUrl
       gifName
       collectionID
       collection {

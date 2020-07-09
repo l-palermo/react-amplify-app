@@ -11,6 +11,7 @@ type Gif
     id: ID!
     title: String!
     gifUrl: String!
+    copyUrl: String!
     gifName: String!
     collectionID: ID!
     collection: Collection @connection(fields: ["collectionID"])

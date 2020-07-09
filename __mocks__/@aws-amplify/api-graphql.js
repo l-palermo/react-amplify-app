@@ -38,6 +38,7 @@ export class GraphQLAPIClass {
                                     id: 'test id',
                                     title: 'title',
                                     gifUrl: 'url',
+                                    copyUrl: 'copyUrl',
                                     gifName: 'gif name',
                                     collectionID: 'test id',
                                 },

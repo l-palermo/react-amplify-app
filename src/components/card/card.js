@@ -3,9 +3,16 @@ import PropTypes from 'prop-types';
 
 import styles from './card.module.css';
 
-const Card = ({ imageUrl, imageAlt, dataId, children }) => (
+const Card = ({ imageUrl, imageAlt, dataId, children, ...others }) => (
     <div className={styles.card} data-qa="card" data-id={dataId}>
-        <img className={styles.image} data-qa="card-image" src={imageUrl} alt={imageAlt} />
+        <img
+            className={styles.image}
+            data-qa="card-image"
+            src={imageUrl}
+            alt={imageAlt}
+            data-src={imageUrl}
+            {...others}
+        />
         <div className={styles.cardHeader} data-qa="card-header">
             {children}
         </div>
