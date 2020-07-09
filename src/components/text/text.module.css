@@ -1,0 +1,55 @@
+.colour {
+    color: white;
+}
+
+.XXS {
+    font-size: var(--font-size-xxs);
+}
+
+.XS {
+    font-size: var(--font-size-xs);
+}
+
+.S {
+    font-size: var(--font-size-s);
+}
+
+.M {
+    font-size: var(--font-size-s);
+
+    @media (min-width: 1200px) {
+        font-size: var(--font-size-m);
+    }
+}
+
+.L {
+    font-size: var(--font-size-m);
+
+    @media (min-width: 1200px) {
+        font-size: var(--font-size-l);
+    }
+}
+
+.XL {
+    font-size: var(--font-size-l);
+
+    @media (min-width: 1200px) {
+        font-size: var(--font-size-xl);
+    }
+}
+
+.XXL {
+    font-size: var(--font-size-xxl);
+}
+
+.THIN {
+    font-weight: lighter;
+}
+
+.MEDIUM {
+    font-weight: normal;
+}
+
+.BOLD {
+    font-weight: bold;
+}

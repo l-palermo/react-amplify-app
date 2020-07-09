@@ -26,7 +26,7 @@ describe('InputField', () => {
 
             wrapper.find('input').simulate('change');
 
-            expect(requiredProps.onChange).toHaveBeenCalledWith('test');
+            expect(requiredProps.onChange).toHaveBeenCalled();
         });
         it('should call the onKeyPress function when a key is pressed', () => {
             const wrapper = setupTest();

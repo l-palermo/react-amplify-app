@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import Container from '../../components/container';
-import CardsLayout from '../../components/cards-layout';
 import { GFY_TRENTING_QS } from './constants';
-import CardWithHeader from '../shared-components/card-with-header';
+import PageContentWrapper from '../shared-components/page-content-wrapper';
 
 const HomePage = () => {
     const [areGifsSaved, setAreGifsSaved] = useState(false);
@@ -11,6 +9,7 @@ const HomePage = () => {
 
     useEffect(() => {
         !areGifsSaved &&
+            !sessionStorage.gifs &&
             fetch(GFY_TRENTING_QS)
                 .then((response) => response.json())
                 .then((data) => {
@@ -21,23 +20,11 @@ const HomePage = () => {
     }, []);
 
     return (
-        <Container dataId="home-page">
-            <CardsLayout dataId="home-page-cards-layout">
-                {gifsStorage.map((gif) => {
-                    const { gifUrl, gfyName, gfyId, title } = gif;
-                    return (
-                        <CardWithHeader
-                            dataId="home-page-card-with-header"
-                            isAdd
-                            key={gfyId}
-                            imageUrl={gifUrl}
-                            title={title}
-                            imageAlt={gfyName}
-                        />
-                    );
-                })}
-            </CardsLayout>
-        </Container>
+        <PageContentWrapper
+            gifs={gifsStorage}
+            pageTitle={'Latest trending reactions...'}
+            dataId="home-page"
+        />
     );
 };
 

@@ -6,8 +6,13 @@
     },
     "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
     "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        // "Atomics": "readonly",
+        // "SharedArrayBuffer": "readonly",
+        "mount": false,
+        "global": false,
+        "fetch": false,
+        "module": false,
+        "__dirname": false
     },
     "parserOptions": {
         "ecmaFeatures": {
@@ -19,10 +24,8 @@
     "plugins": ["react", "prettier"],
     "rules": {
         "prettier/prettier": "error",
-        "no-undef": "off",
         "react/display-name": "off"
     },
-    // add react version to support plugin:react
     "settings": {
         "react": {
             "version": "detect"

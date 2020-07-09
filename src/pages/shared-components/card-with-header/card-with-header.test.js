@@ -15,6 +15,7 @@ const requiredProps = {
     imageUrl: 'https://test.com',
     imageAlt: 'image test',
     title: 'test',
+    copyUrl: 'copyUrl',
 };
 
 const setupTest = (props) => mount(<CardWithHeader {...requiredProps} {...props} />);

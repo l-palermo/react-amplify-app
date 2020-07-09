@@ -44,7 +44,7 @@ describe('App', () => {
         searchInput.simulate('change', { target: { value: 'this is a test' } });
         searchInput.simulate('keypress', { key: 'Enter' });
 
-        expect(wrapper.find('[data-id="search-result-page"]')).toHaveLength(1);
+        expect(wrapper.find('[data-id="search-page"]')).toHaveLength(1);
     });
     it('should render the collections page', async () => {
         const wrapper = setupTest();

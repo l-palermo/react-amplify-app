@@ -3,25 +3,21 @@ import React, { useEffect, useState } from 'react';
 import styles from './collections-page.module.css';
 import Container from '../../components/container';
 import CollectionCard from '../../components/collection-card';
-import AddIcon from '../../assets/add/add.svg';
-import AddCollectionIcon from '../../assets/add-collection/add-collection.svg';
 import TrashIcon from '../../assets/trash/trash.svg';
 import MenuItem from '../../components/menu-item';
-import InputField from '../../components/input-field';
+import Text from '../../components/text';
 import {
     collectionList,
     collectionCreate,
     collectionDelete,
 } from './lib/queries/collection-queries';
+import CollectionsHeader from './components/collections-header';
 
 const CollectionsPage = () => {
-    const [isVisible, setIsVisible] = useState(false);
-    const [collectionName, setCollectionName] = useState('');
     const [collections, setCollections] = useState([]);
 
-    const createCollection = async () => {
+    const createCollection = async (collectionName) => {
         await collectionCreate(collectionName);
-        setCollectionName('');
         collectionList().then((data) => setCollections(data));
     };
 
@@ -36,36 +32,11 @@ const CollectionsPage = () => {
 
     return (
         <Container dataId="collections-page">
-            <div className={styles.collectionHeader}>
-                <MenuItem
-                    dataId="add-collection-button"
-                    name={!isVisible ? 'add collection' : 'Close'}
-                    Icon={AddCollectionIcon}
-                    isAlignedLeft
-                    hasPaddingRight
-                    onClick={() => setIsVisible(!isVisible)}
-                />
-                {isVisible && (
-                    <InputField
-                        placeholder="Collection name..."
-                        value={collectionName}
-                        onChange={setCollectionName}
-                        onKeyPress={(e) => e.key === 'Enter' && createCollection()}
-                        ButtonIcon={
-                            <MenuItem
-                                dataId="arrow-close-button"
-                                Icon={AddIcon}
-                                name="Add"
-                                hasCircle={false}
-                                onClick={createCollection}
-                            />
-                        }
-                    />
-                )}
-            </div>
+            <CollectionsHeader onCreateCollection={createCollection} />
+            <Text tag={Text.tags.H2}>{'Collections...'}</Text>
             <div data-qa="collections-page-cards-layout" className={styles.layout}>
                 {collections.map(({ id, name }) => {
-                    const path = `/collections/${id}`;
+                    const path = `/collections/${id}/${name}`;
                     return (
                         <CollectionCard
                             key={id}

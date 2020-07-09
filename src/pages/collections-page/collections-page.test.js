@@ -33,16 +33,6 @@ describe('Collection page', () => {
         expect(wrapper.find('[data-qa="collection-card"]')).toHaveLength(2);
     });
     describe('Actions', () => {
-        it('should render the input field when "add collection" button is clicked', async () => {
-            let wrapper;
-            await act(async () => (wrapper = setupTest()));
-            wrapper.update();
-
-            const button = wrapper.find('[data-id="add-collection-button"] button');
-            button.simulate('click');
-
-            expect(wrapper.find('[data-qa="input-field"]')).toHaveLength(1);
-        });
         it('should allow the user to add a collection using the enter key', async () => {
             let wrapper;
             await act(async () => (wrapper = setupTest()));
@@ -58,20 +48,6 @@ describe('Collection page', () => {
             wrapper.update();
 
             // mock the database
-        });
-        it('shoudl not add a collection if a different key other than enter is pressed', async () => {
-            let wrapper;
-            await act(async () => (wrapper = setupTest()));
-            wrapper.update();
-
-            const button = wrapper.find('[data-id="add-collection-button"] button');
-            button.simulate('click');
-
-            const input = wrapper.find('[data-qa="input-field"] input');
-            await act(async () => input.simulate('keypress', { key: 'ArrowDown' }));
-            wrapper.update();
-
-            expect(wrapper.find('[data-qa="collection-card"]')).toHaveLength(2);
         });
         it('should allow the user to add a collection using the add button', async () => {
             let wrapper;

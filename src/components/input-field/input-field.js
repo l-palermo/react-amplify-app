@@ -11,8 +11,8 @@ const InputField = ({ dataId, ButtonIcon, placeholder, value, onChange, onKeyPre
                 type="text"
                 value={value}
                 placeholder={placeholder}
-                onChange={(e) => onChange(e.target.value)}
-                onKeyPress={(e) => onKeyPress(e)}
+                onChange={onChange}
+                onKeyPress={onKeyPress}
             />
             {ButtonIcon}
         </div>

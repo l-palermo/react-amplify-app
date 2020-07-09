@@ -5,8 +5,20 @@ import HomePage from '.';
 import { UserContextProvider } from '../../helpers/user-context/user-context';
 
 const data = [
-    { gifUrl: 'https://banana.com', gfyName: 'test', gfyId: 'test id', title: 'test' },
-    { gifUrl: 'https://gif.com', gfyName: 'test next', gfyId: 'test ide', title: 'test' },
+    {
+        webpUrl: 'https://banana.com',
+        gfyName: 'test',
+        gfyId: 'test id',
+        title: 'test',
+        gif100px: 'url',
+    },
+    {
+        webpUrl: 'https://gif.com',
+        gfyName: 'test next',
+        gfyId: 'test ide',
+        title: 'test',
+        gif100px: 'url',
+    },
 ];
 
 global.fetch = jest.fn().mockImplementation(() =>
