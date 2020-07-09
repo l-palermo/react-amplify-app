@@ -9,10 +9,10 @@ The goal is to add a database and allow the users to create their own gif collec
 
 ---
 
-`Todos:
-Refactor database queries to catch error and adjust test`<br>
-`ACCESSIBILITY`<br>
+`Todos:`<br>
+`ACCESSIBILITY & See a confirmation message before delete & React.Lazy for code splitting`<br>
 `Create a GitHub packages repo and migrate app components`<br>
+`Refactor database queries to catch error and adjust test`<br>
 `Refactor components to be context agnostic - Almost done`<br>
 `Review test and code structure - Some`<br>
 `Add message as sign up verification method`<br>
@@ -164,4 +164,9 @@ to add GraphQL and DynamoDB
 
 to mock DB during dev
 * run `amplify mock api`
+---
+
+<h4>Add lazy loading via native IntersectionObserver</h4>
+
+---
 
