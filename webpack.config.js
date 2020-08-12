@@ -15,6 +15,13 @@ module.exports = function (webpackEnv) {
         mode: env,
         // entry point to load all the dependencies/modules included in the app
         entry: './src/index.js',
+        // where the bundle will be stored
+        output: {
+            path: path.resolve(__dirname, 'dist'),
+            filename: '[name].bundle.js',
+            chunkFilename: '[name].bundle.js',
+            publicPath: '/',
+        },
         module: {
             rules: [
                 // js, jsx rules
@@ -96,11 +103,6 @@ module.exports = function (webpackEnv) {
             // console error were due to .mjs extension missing
             extensions: ['*', '.mjs', '.js', '.jsx'],
         },
-        // where the bundle will be stored
-        output: {
-            filename: 'bundle.js',
-            path: path.resolve(__dirname, 'dist'),
-        },
         // enables source maps
         devtool: !webpackEnv ? 'inline-source-map' : false,
         devServer: !webpackEnv
@@ -109,12 +111,14 @@ module.exports = function (webpackEnv) {
                   historyApiFallback: true,
                   // tells webpack where to take the content from
                   contentBase: './dist',
-                  // needs to be specified ...?
+                  // needs to be specified, he default one is not recognised, strange.
                   port: 8000,
                   // compress the bundle
                   compress: true,
-                  hot: true,
+                  //   hot: true,
                   // hotOnly: true,
+                  stats: 'minimal',
+                  watchContentBase: true,
               }
             : {},
         plugins: [

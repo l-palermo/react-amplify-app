@@ -20,7 +20,6 @@ It uses AWS Amplify for user authentication, securely store data and user metada
 
 The user will:
 
-* See a confirmation message before delete
 * Ensure there are no duplicates in each collection
 * Search for gifs inside a collection
 
@@ -40,6 +39,7 @@ The user can:
 * Add Delete collections
 * Add gif to a specific collection
 * Delete gif from a specific collection
+* Confirm before delete a collection
 
 ---
 
@@ -166,6 +166,10 @@ to mock DB during dev
 ---
 
 <h4>Add lazy loading via native IntersectionObserver</h4>
+
+---
+
+<h4>Improved accessibility</h4>
 
 ---
 

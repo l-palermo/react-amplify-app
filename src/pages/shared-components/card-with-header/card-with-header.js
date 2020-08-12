@@ -11,6 +11,7 @@ import plusIcon from '../../../assets/plus/plus.svg';
 import trashIcon from '../../../assets/trash/trash.svg';
 import { gifCreate, gifDelete } from './lib/queries/gif-queries';
 import { collectionList } from './lib/queries/collection-queries';
+import detectBrowser from './lib/helpers/detect-browser';
 
 const CardWithHeader = ({
     isAdd,
@@ -27,7 +28,7 @@ const CardWithHeader = ({
     const [isVisible, setIsVisible] = useState(false);
     const [items, setItems] = useState([]);
 
-    const copytoClipboard = () => {
+    const copyToClipboard = () => {
         navigator.clipboard.writeText(copyUrl);
         setIsCopied(true);
     };
@@ -39,12 +40,24 @@ const CardWithHeader = ({
         return () => clearTimeout(timer);
     }, [isCopied]);
 
+    const imageUrlAdapter = () => {
+        if (detectBrowser() === 'Safari') {
+            return imageUrl.replace('.webp', '-small.gif');
+        }
+        return imageUrl;
+    };
+
     return (
-        <Card imageUrl={imageUrl} imageAlt={imageAlt} dataId={dataId}>
+        <Card
+            imageUrl={imageUrlAdapter()}
+            imageAlt={imageAlt}
+            dataId={dataId}
+            headerAriaLabel="group, control buttons"
+        >
             <MenuItem
                 dataId="card-copy-button"
                 Icon={isCopied ? checkIcon : copyIcon}
-                onClick={copytoClipboard}
+                onClick={copyToClipboard}
                 name="Copy"
                 hasPaddingRight
                 isHeaderItem
@@ -52,7 +65,7 @@ const CardWithHeader = ({
             <MenuItem
                 dataId="card-name-button"
                 Icon={textIcon}
-                name={title}
+                name={`Title: ${title}`}
                 isHeaderItem
                 hasPaddingRight
             />

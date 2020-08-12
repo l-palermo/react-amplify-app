@@ -32,4 +32,10 @@ describe('Collection card', () => {
         wrapper.find('a').simulate('click', { button: 0 });
         expect(mockfunction.onClick).toHaveBeenCalled();
     });
+    it('should render the header items correctly', () => {
+        const props = { children: [<div key={1} />, <div key={2} />] };
+        const wrapper = setupTest(props);
+
+        expect(wrapper.find('[data-qa="collection-card-header"]').children()).toHaveLength(2);
+    });
 });

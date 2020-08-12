@@ -1,4 +1,4 @@
-type Collection @model @auth(rules: [{ allow: owner }]) {
+type Collection @model @auth(rules: [{ allow: owner }, { allow: groups, groups: ["admin"] }]) {
     id: ID!
     name: String!
     gifs: [Gif] @connection(keyName: "byCollection", fields: ["id"])
@@ -6,7 +6,7 @@ type Collection @model @auth(rules: [{ allow: owner }]) {
 
 type Gif
     @model
-    @auth(rules: [{ allow: owner }])
+    @auth(rules: [{ allow: owner }, { allow: groups, groups: ["admin"] }])
     @key(name: "byCollection", fields: ["collectionID"]) {
     id: ID!
     title: String!

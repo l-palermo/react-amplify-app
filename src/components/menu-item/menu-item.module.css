@@ -47,7 +47,7 @@
 .icon {
     fill: inherit;
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 .paddingRight {
@@ -97,7 +97,6 @@
     max-width: var(--header-item-radius);
     padding: var(--header-icon-padding);
     margin-bottom: var(--spacing-xs);
-    margin-right: var(--spacing-xs);
 }
 
 .titleBox {

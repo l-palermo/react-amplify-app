@@ -4,15 +4,19 @@
         "es6": true,
         "jest": true
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "plugin:jsx-a11y/recommended"
+    ],
     "globals": {
-        // "Atomics": "readonly",
-        // "SharedArrayBuffer": "readonly",
         "mount": false,
         "global": false,
         "fetch": false,
         "module": false,
-        "__dirname": false
+        "__dirname": false,
+        "process": false
     },
     "parserOptions": {
         "ecmaFeatures": {
@@ -21,7 +25,7 @@
         "ecmaVersion": 11,
         "sourceType": "module"
     },
-    "plugins": ["react", "prettier"],
+    "plugins": ["react", "prettier", "jsx-a11y"],
     "rules": {
         "prettier/prettier": "error",
         "react/display-name": "off"

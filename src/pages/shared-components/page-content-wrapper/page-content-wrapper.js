@@ -29,19 +29,19 @@ const PageContentWrapper = ({ gifs, pageTitle, dataId }) => {
 
     return (
         <Container dataId={dataId}>
-            <Text dataId={`${dataId}-title`} tag={Text.tags.H2}>
+            <Text dataId={`${dataId}-title`} tag={Text.tags.H1}>
                 {pageTitle}
             </Text>
-            <CardsLayout dataId={`${dataId}-cards-layout`}>
-                {gifs.map(({ webpUrl, gfyName, gfyId, title, gif100px }) => (
+            <CardsLayout dataId={`${dataId}-cards-layout`} ariaLabel="group, gif images">
+                {gifs.map(({ webpUrl, gfyId, title, max2mbGif }) => (
                     <CardWithHeader
                         key={gfyId}
                         dataId={`${dataId}-card-with-header`}
                         isAdd
-                        copyUrl={gif100px}
+                        copyUrl={max2mbGif}
                         imageUrl={webpUrl}
                         title={title}
-                        imageAlt={gfyName}
+                        imageAlt="gif"
                     />
                 ))}
             </CardsLayout>
@@ -54,10 +54,9 @@ PageContentWrapper.propTypes = {
     gifs: PropTypes.arrayOf(
         PropTypes.shape({
             webpUrl: PropTypes.string.isRequired,
-            gfyName: PropTypes.string.isRequired,
             gfyId: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
-            gif100px: PropTypes.string.isRequired,
+            max2mbGif: PropTypes.string.isRequired,
         }).isRequired
     ).isRequired,
     pageTitle: PropTypes.string.isRequired,

@@ -29,6 +29,7 @@ const MenuItem = ({
             onMouseLeave={() => setHasNameBox(false)}
         >
             <button
+                aria-label={name}
                 className={cx(styles.button, {
                     [styles.hasCircle]: hasCircle,
                     [styles.isHeaderItem]: isHeaderItem,

@@ -1,6 +1,5 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-
 import App from './app';
 
 const setupTest = () => mount(<App />);
@@ -33,7 +32,7 @@ describe('App', () => {
         const wrapper = setupTest();
         expect(wrapper.find('[data-id="home-page"]')).toHaveLength(1);
     });
-    it('should render the search result page', () => {
+    it('should render the search result page', async () => {
         const wrapper = setupTest();
         const searchButton = wrapper.find('[data-id="search-button"]');
 
@@ -43,6 +42,12 @@ describe('App', () => {
 
         searchInput.simulate('change', { target: { value: 'this is a test' } });
         searchInput.simulate('keypress', { key: 'Enter' });
+
+        expect(wrapper.find('Suspense').prop('fallback').props.children).toEqual('Hello world');
+        await act(async () => wrapper.find('[data-id="search-page"]'));
+        // strange situation to be resolved, one await act() is not sufficient
+        await act(async () => wrapper.find('[data-id="search-page"]'));
+        wrapper.update();
 
         expect(wrapper.find('[data-id="search-page"]')).toHaveLength(1);
     });
