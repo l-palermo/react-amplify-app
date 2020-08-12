@@ -8,7 +8,7 @@ const requiredProps = {
     children: <div data-qa="test-1" />,
 };
 
-const setupTest = () => mount(<Card {...requiredProps} />);
+const setupTest = (props) => mount(<Card {...requiredProps} {...props} />);
 
 describe('Card', () => {
     it('should render a card', () => {
@@ -31,5 +31,11 @@ describe('Card', () => {
         const wrapper = setupTest();
 
         expect(wrapper.find('[data-qa="card-header"] [data-qa="test-1"]')).toHaveLength(1);
+    });
+    it('should render the header objects group with an aria label for accessibility', () => {
+        const ariaLabel = 'group, header items';
+        const wrapper = setupTest({ headerAriaLabel: ariaLabel });
+
+        expect(wrapper.find('[data-qa="card-header"]')).toHaveProp('aria-label', ariaLabel);
     });
 });

@@ -12,7 +12,7 @@ const mockClipboard = {
 global.navigator.clipboard = mockClipboard;
 
 const requiredProps = {
-    imageUrl: 'https://test.com',
+    imageUrl: 'https://test.webp',
     imageAlt: 'image test',
     title: 'test',
     copyUrl: 'copyUrl',
@@ -116,6 +116,12 @@ describe('Card with header', () => {
             button.simulate('click');
 
             // mock database
+        });
+        it('should change the image extension from .webp to .gif if browser is Safari', () => {
+            const navigatorUserAgent = jest.spyOn(window.navigator, 'userAgent', 'get');
+            navigatorUserAgent.mockReturnValue('safari');
+            const wrapper = setupTest();
+            expect(wrapper.find('[data-qa="card-image"]').prop('src')).toContain('-small.gif');
         });
     });
 });

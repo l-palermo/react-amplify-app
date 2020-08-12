@@ -1,5 +1,9 @@
 .collectionsHeader {
     display: flex;
     align-items: center;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-l);
+
+    @media (min-width: 480px) {
+        margin-bottom: var(--spacing-xl);
+    }
 }

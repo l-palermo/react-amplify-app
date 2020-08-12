@@ -12,18 +12,35 @@ const setupTest = () =>
     );
 
 describe('Collection page', () => {
-    it('renders the collections page container', async () => {
+    it('should render the collections page container', async () => {
         let wrapper;
         await act(async () => (wrapper = setupTest()));
         wrapper.update();
 
         expect(wrapper.find('[data-id="collections-page"]')).toHaveLength(1);
     });
+    it('should render the collections link group with an aria label attribute for accessibility', async () => {
+        let wrapper;
+        await act(async () => (wrapper = setupTest()));
+        wrapper.update();
+
+        expect(wrapper.find('[data-qa="collections-page-cards-layout"]')).toHaveProp(
+            'aria-label',
+            'group, collection links'
+        );
+    });
     it('should render the "add collection" button', async () => {
         let wrapper;
         await act(async () => (wrapper = setupTest()));
         wrapper.update();
         expect(wrapper.find('[data-id="add-collection-button"]')).toHaveLength(1);
+    });
+    it('should render the page title correctly', async () => {
+        let wrapper;
+        await act(async () => (wrapper = setupTest()));
+        wrapper.update();
+
+        expect(wrapper.find('h1[data-id="collections-page-title"]')).toHaveLength(1);
     });
     it('should render the collections correctly', async () => {
         let wrapper;
@@ -72,7 +89,14 @@ describe('Collection page', () => {
 
             const card = wrapper.find('[data-qa="collection-card"]').at(0);
             const button = card.find('[data-id="delete-button"] button');
-            await act(async () => button.simulate('click'));
+
+            button.simulate('click');
+
+            const confirmButton = wrapper.find(
+                '[data-qa="confirmation"] [data-qa="confirm-button"]'
+            );
+
+            await act(async () => confirmButton.simulate('click'));
             wrapper.update();
 
             // mock the data base

@@ -3,15 +3,21 @@ import PropTypes from 'prop-types';
 
 import styles from './cards-layout.module.css';
 
-const CardsLayout = ({ children, dataId }) => {
+const CardsLayout = ({ children, dataId, ariaLabel }) => {
     return (
-        <div className={styles.cardsLayout} data-qa="page-cards-layout" data-id={dataId}>
+        <section
+            className={styles.cardsLayout}
+            data-qa="page-cards-layout"
+            data-id={dataId}
+            aria-label={ariaLabel}
+        >
             {children}
-        </div>
+        </section>
     );
 };
 
 CardsLayout.propTypes = {
+    ariaLabel: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
     dataId: PropTypes.string,
 };

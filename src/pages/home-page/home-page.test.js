@@ -10,14 +10,14 @@ const data = [
         gfyName: 'test',
         gfyId: 'test id',
         title: 'test',
-        gif100px: 'url',
+        max2mbGif: 'url',
     },
     {
         webpUrl: 'https://gif.com',
         gfyName: 'test next',
         gfyId: 'test ide',
         title: 'test',
-        gif100px: 'url',
+        max2mbGif: 'url',
     },
 ];
 

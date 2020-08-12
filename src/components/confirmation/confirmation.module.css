@@ -1,0 +1,41 @@
+.confirmationContainer {
+    padding: 0.3rem;
+    background-color: rgba(0, 0, 0, 0.575);
+    border-radius: 1rem;
+    display: flex;
+}
+
+.confirmationButton {
+    border-radius: 50%;
+    border: none;
+    padding: 0.2rem;
+    display: flex;
+    height: inherit;
+    align-items: center;
+    margin-right: 0.5rem;
+    background-color: white;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:hover {
+        background-color: lightgrey;
+    }
+}
+
+.confirm {
+    fill: green;
+
+    &:hover {
+        fill: white;
+    }
+}
+
+.deny {
+    fill: darkred;
+
+    &:hover {
+        fill: white;
+    }
+}

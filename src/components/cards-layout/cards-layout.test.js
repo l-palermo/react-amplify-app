@@ -4,6 +4,7 @@ import CardsLayout from './cards-layout';
 
 const requiredProps = {
     children: <div id="test" />,
+    ariaLabel: 'group, test',
 };
 
 const setupTest = (props) => mount(<CardsLayout {...requiredProps} {...props} />);
@@ -13,6 +14,13 @@ describe('Cards layout', () => {
         const wrapper = setupTest();
 
         expect(wrapper.find('[data-qa="page-cards-layout"]')).toHaveClassName('cardsLayout');
+    });
+    it('should render a aria label prop correctly', () => {
+        const wrapper = setupTest();
+        expect(wrapper.find('[data-qa="page-cards-layout"]')).toHaveProp(
+            'aria-label',
+            requiredProps.ariaLabel
+        );
     });
     it('should render a data id prop correctly', () => {
         const wrapper = setupTest({ dataId: 'test' });

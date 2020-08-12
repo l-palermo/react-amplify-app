@@ -16,8 +16,8 @@ const CollectionPage = ({ collectionId, collectionName }) => {
 
     return (
         <Container dataId="collection-page">
-            <Text tag={Text.tags.H2}>{`${collectionName}...`}</Text>
-            <CardsLayout dataId="home-page-cards-layout">
+            <Text dataId="collection-page-title" tag={Text.tags.H1}>{`${collectionName}...`}</Text>
+            <CardsLayout dataId="collection-page-cards-layout" ariaLabel="group, gifs imagess">
                 {gifs.map(({ gifUrl, gifName, id, title, copyUrl }) => {
                     return (
                         <CardWithHeader

@@ -2,7 +2,7 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateCollection = /* GraphQL */ `
-  subscription OnCreateCollection($owner: String!) {
+  subscription OnCreateCollection($owner: String) {
     onCreateCollection(owner: $owner) {
       id
       name
@@ -16,7 +16,7 @@ export const onCreateCollection = /* GraphQL */ `
   }
 `;
 export const onUpdateCollection = /* GraphQL */ `
-  subscription OnUpdateCollection($owner: String!) {
+  subscription OnUpdateCollection($owner: String) {
     onUpdateCollection(owner: $owner) {
       id
       name
@@ -30,7 +30,7 @@ export const onUpdateCollection = /* GraphQL */ `
   }
 `;
 export const onDeleteCollection = /* GraphQL */ `
-  subscription OnDeleteCollection($owner: String!) {
+  subscription OnDeleteCollection($owner: String) {
     onDeleteCollection(owner: $owner) {
       id
       name
@@ -44,7 +44,7 @@ export const onDeleteCollection = /* GraphQL */ `
   }
 `;
 export const onCreateGif = /* GraphQL */ `
-  subscription OnCreateGif($owner: String!) {
+  subscription OnCreateGif($owner: String) {
     onCreateGif(owner: $owner) {
       id
       title
@@ -66,7 +66,7 @@ export const onCreateGif = /* GraphQL */ `
   }
 `;
 export const onUpdateGif = /* GraphQL */ `
-  subscription OnUpdateGif($owner: String!) {
+  subscription OnUpdateGif($owner: String) {
     onUpdateGif(owner: $owner) {
       id
       title
@@ -88,7 +88,7 @@ export const onUpdateGif = /* GraphQL */ `
   }
 `;
 export const onDeleteGif = /* GraphQL */ `
-  subscription OnDeleteGif($owner: String!) {
+  subscription OnDeleteGif($owner: String) {
     onDeleteGif(owner: $owner) {
       id
       title

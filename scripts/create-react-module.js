@@ -9,14 +9,10 @@ const userInput = input.createInterface({
 function toCamelCase(name) {
     if (name.includes('-')) {
         const nameArray = name.split('-');
-        const bo = nameArray.map((word) => {
-            return word[0].toUpperCase() + word.slice(1);
-        });
-        userInput.close();
-        return bo.join('');
+        const camelName = nameArray.map((word) => word[0].toUpperCase() + word.slice(1));
+        return camelName.join('');
     } else {
         const word = name[0].toUpperCase() + name.slice(1);
-        userInput.close();
         return word;
     }
 }
@@ -29,8 +25,6 @@ function createFolder(pathName) {
     fs.mkdirSync(pathName, { recursive: true }, (error) => {
         if (error) {
             console.log('There is an error' + error);
-        } else {
-            console.log('Folder created successfully');
         }
     });
 }
@@ -51,7 +45,7 @@ function createMain(path, name, nameCamelCase) {
     const mainContent = `import React from 'react';
 import PropTypes from 'prop-types';\n
 const ${nameCamelCase} = () => {
-    return ( );
+    return (<></>);
 };\n
 ${nameCamelCase}.propTypes = {\n\n};\n
 ${nameCamelCase}.defaultProps = {\n\n};\n
@@ -68,7 +62,13 @@ function createTest(path, name, nameCamelCase) {
     const test = path + '/' + name + '.test.js';
     const testContent = `import React from 'react';\n
 import ${nameCamelCase} from '.';\n
-describe('${nameCamelCase}', () => {\n\n});\n`;
+const requiredProps = {\n\n};\n
+const setupTest = mount(<${nameCamelCase} {...requiredProps} />);\n
+describe('${nameCamelCase}', () => {
+    it('should ', () => {
+        const wrapper = setupTest();
+    });
+});\n`;
 
     fs.writeFile(test, testContent, (error) => {
         if (error) {
@@ -77,20 +77,20 @@ describe('${nameCamelCase}', () => {\n\n});\n`;
     });
 }
 
-function script() {
-    userInput.question('Enter folder name: ', function (folderName) {
-        userInput.question('Enter component name: ', function (componentName) {
+(async () => {
+    userInput.question('Enter folder name/path (path starts from src/): ', async function (
+        folderName
+    ) {
+        userInput.question('Enter component name (kebab-case): ', async function (componentName) {
             const nameCamelCase = toCamelCase(componentName);
             const location = path(folderName, componentName);
 
-            createFolder(location);
-            createIndex(location, componentName, nameCamelCase);
-            createMain(location, componentName, nameCamelCase);
-            createTest(location, componentName, nameCamelCase);
+            await createFolder(location);
+            await createIndex(location, componentName, nameCamelCase);
+            await createMain(location, componentName, nameCamelCase);
+            await createTest(location, componentName, nameCamelCase);
 
             userInput.close();
         });
     });
-}
-
-script();
+})();

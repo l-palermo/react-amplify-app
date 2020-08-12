@@ -30,6 +30,11 @@ describe('MenuItem', () => {
             wrapper.find('button').simulate('click');
             expect(requiredProps.onClick).toHaveBeenCalled();
         });
+        it('should have a aria label attributo for accessibility', () => {
+            const wrapper = setupTest();
+
+            expect(wrapper.find('button')).toHaveProp('aria-label', requiredProps.name);
+        });
     });
     describe('custom', () => {
         it('should render an icon surrounded by a circle', () => {

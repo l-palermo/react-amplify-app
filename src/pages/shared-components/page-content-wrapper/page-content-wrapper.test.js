@@ -18,14 +18,14 @@ const props = {
             gfyName: 'test',
             gfyId: 'test id',
             title: 'test',
-            gif100px: 'url',
+            max2mbGif: 'url',
         },
         {
             webpUrl: 'https://gif.com',
             gfyName: 'test next',
             gfyId: 'test ide',
             title: 'test',
-            gif100px: 'url',
+            max2mbGif: 'url',
         },
     ],
     pageTitle: 'test',
@@ -41,7 +41,7 @@ describe('PageContentWrapper', () => {
     it('should render the page title correctly', () => {
         const wrapper = setupTest();
 
-        expect(wrapper.find("h2[data-id='test-page-title']")).toHaveText(props.pageTitle);
+        expect(wrapper.find("h1[data-id='test-page-title']")).toHaveText(props.pageTitle);
     });
     it('should render the cards correctly', () => {
         const wrapper = setupTest();

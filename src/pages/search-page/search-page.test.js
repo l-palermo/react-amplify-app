@@ -1,7 +1,7 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
-import SearchResultPage from './search-page';
+import SearchPage from '.';
 import { UserContext } from '../../helpers/user-context/user-context';
 
 const data = [
@@ -10,14 +10,14 @@ const data = [
         gfyName: 'test',
         gfyId: 'test id',
         title: 'test',
-        gif100px: 'url',
+        max2mbGif: 'url',
     },
     {
         webpUrl: 'https://gif.com',
         gfyName: 'test next',
         gfyId: 'test ide',
         title: 'test',
-        gif100px: 'url',
+        max2mbGif: 'url',
     },
 ];
 
@@ -32,7 +32,7 @@ global.fetch = jest.fn().mockImplementation(() =>
 const setupTest = (searchValue) =>
     mount(
         <UserContext.Provider value={searchValue}>
-            <SearchResultPage />
+            <SearchPage />
         </UserContext.Provider>
     );
 
@@ -52,8 +52,8 @@ describe('Search result page', () => {
         expect(wrapper.find('CardsLayout [data-id="search-page-cards-layout"]')).toHaveLength(1);
         expect(wrapper.find('CardsLayout [className="card"]')).toHaveLength(2);
 
-        wrapper.find('CardsLayout [className="card"]').forEach((item, index) => {
-            expect(item.find('img')).toHaveProp('alt', data[index].gfyName);
+        wrapper.find('CardsLayout [className="card"]').forEach((item) => {
+            expect(item.find('img')).toHaveProp('alt', 'gif');
         });
     });
 
