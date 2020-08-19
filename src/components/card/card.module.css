@@ -1,16 +1,34 @@
 :root {
     --card-height: 18rem;
     --image-border-radius: 1rem;
+    --outline-fade: 0.35rem;
 }
 
 .card {
-    height: var(--card-height);
-    max-width: 100%;
     display: flex;
+    position: relative;
+}
+
+.cardButton {
+    width: 100%;
+    display: flex;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+
+    &:focus,
+    &:active,
+    &:hover {
+        outline: none;
+        border-radius: var(--image-border-radius);
+        box-shadow: 0 0 var(--spacing-xxs) var(--outline-fade) white;
+    }
 }
 
 .image {
     min-width: 100%;
+    height: var(--card-height);
     object-fit: cover;
     border-radius: var(--image-border-radius);
 }
@@ -21,4 +39,16 @@
     cursor: pointer;
     display: flex;
     flex-direction: column;
+}
+
+.clickConfirmationText {
+    color: white;
+    position: absolute;
+    font-size: var(--font-size-xl);
+    font-weight: bolder;
+    align-self: center;
+    left: 50%;
+    transform: translate(-50%, 0);
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: thin;
 }
