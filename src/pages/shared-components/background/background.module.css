@@ -20,7 +20,7 @@
     min-height: var(--background-height);
     align-items: center;
     justify-content: center;
-    background: linear-gradient(307deg, #a6e7d7, #bce69a, #6bddff, #ad93fd, #ec9f9f);
+    background: linear-gradient(307deg, #a6e7d7, #bce69a, #6bddff, #ad93fd, #ec9f9f, rgb(187, 238, 110));
     background-size: 1000% 1000%;
-    animation: animate-gradient 60s ease infinite;
+    animation: animate-gradient 90s ease infinite;
 }

@@ -8,4 +8,5 @@
     grid-template-columns: repeat(auto-fit, minmax(var(--cell-width), 1fr));
     grid-gap: var(--spacing-m);
     overflow: hidden;
+    padding: var(--spacing-xs);
 }

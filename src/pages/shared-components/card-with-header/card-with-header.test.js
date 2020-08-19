@@ -3,8 +3,6 @@ import { act } from 'react-dom/test-utils';
 
 import CardWithHeader from '.';
 
-jest.useFakeTimers();
-
 const mockClipboard = {
     writeText: jest.fn(),
 };
@@ -31,29 +29,13 @@ describe('Card with header', () => {
 
             expect(wrapper.find('[data-qa="card"]')).toHaveLength(1);
         });
-        it('should render the copy button', () => {
-            const wrapper = setupTest();
-
-            expect(wrapper.find('[data-id="card-copy-button"]')).toHaveLength(1);
-        });
         it('should copy url to clipboard', () => {
             const wrapper = setupTest();
-            const button = wrapper.find('[data-id="card-copy-button"]').find('button');
+            const button = wrapper.find('[data-qa="card-button"]');
 
             button.simulate('click');
 
             expect(mockClipboard.writeText).toHaveBeenCalled();
-        });
-        it('should render a different icon after copy button is clicked', () => {
-            const wrapper = setupTest();
-            const button = wrapper.find('[data-id="card-copy-button"]').find('button');
-
-            button.simulate('click');
-
-            act(() => {
-                jest.advanceTimersByTime(700);
-            });
-            wrapper.update();
         });
         it('should render the title button', () => {
             const props = { title: 'test' };

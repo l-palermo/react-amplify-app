@@ -14,7 +14,7 @@
     "create:component": "node scripts/create-react-module.js"
   },
   "keywords": [],
-  "author": "Luigi <luigi.palermo@clearscore.com> (https://www.clearscore.com/)",
+  "author": "Luigi, l-palermo@hotmail.it",
   "license": "UNLICENSED",
   "devDependencies": {
     "@aws-amplify/ui-react": "0.2.7",

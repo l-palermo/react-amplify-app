@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './page-content-layout.module.css';
 import Container from '../../../components/container';
 import CardsLayout from '../../../components/cards-layout';
 import Text from '../../../components/text';
@@ -29,9 +30,11 @@ const PageContentWrapper = ({ gifs, pageTitle, dataId }) => {
 
     return (
         <Container dataId={dataId}>
-            <Text dataId={`${dataId}-title`} tag={Text.tags.H1}>
-                {pageTitle}
-            </Text>
+            <div className={styles.textSpacing}>
+                <Text dataId={`${dataId}-title`} tag={Text.tags.H1}>
+                    {pageTitle}
+                </Text>
+            </div>
             <CardsLayout dataId={`${dataId}-cards-layout`} ariaLabel="group, gif images">
                 {gifs.map(({ webpUrl, gfyId, title, max2mbGif }) => (
                     <CardWithHeader

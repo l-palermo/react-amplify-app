@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Card from '../../../components/card';
 import MenuItem from '../../../components/menu-item';
 import DropdownList from '../../../components/dropdown-list';
-import copyIcon from '../../../assets/copy/copy.svg';
-import checkIcon from '../../../assets/check/check.svg';
 import textIcon from '../../../assets/title/title.svg';
 import plusIcon from '../../../assets/plus/plus.svg';
 import trashIcon from '../../../assets/trash/trash.svg';
@@ -24,21 +22,12 @@ const CardWithHeader = ({
     onDelete,
     copyUrl,
 }) => {
-    const [isCopied, setIsCopied] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const [items, setItems] = useState([]);
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(copyUrl);
-        setIsCopied(true);
     };
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsCopied(false);
-        }, 700);
-        return () => clearTimeout(timer);
-    }, [isCopied]);
 
     const imageUrlAdapter = () => {
         if (detectBrowser() === 'Safari') {
@@ -53,15 +42,9 @@ const CardWithHeader = ({
             imageAlt={imageAlt}
             dataId={dataId}
             headerAriaLabel="group, control buttons"
+            onClick={copyToClipboard}
+            clickConfirmationText="Copied!"
         >
-            <MenuItem
-                dataId="card-copy-button"
-                Icon={isCopied ? checkIcon : copyIcon}
-                onClick={copyToClipboard}
-                name="Copy"
-                hasPaddingRight
-                isHeaderItem
-            />
             <MenuItem
                 dataId="card-name-button"
                 Icon={textIcon}
