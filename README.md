@@ -1,6 +1,6 @@
 # CATURDAY
 
-Deployed at: https://master.d3q12s0gysig02.amplifyapp.com/
+https://wwww.caturday.uk
 
 CATURDAY is a simple web app that allows the user to find cool gif and easily share them with friends.
 It uses AWS Amplify for user authentication, securely store data and user metadata and for the CI/CD lifecycle. React as UI library tool, webpack, babel, post-css, css-module and jest/enzyme.
@@ -11,7 +11,6 @@ It uses AWS Amplify for user authentication, securely store data and user metada
 
 `Todos:`<br>
 `Create a GitHub packages repo and migrate app components`<br>
-`Allow mobile user to copy gif element directly istead of url`<br>
 `Refactor database mock queries to catch error and adjust test`<br>
 `Review test and code structure - Some`<br>
 `Add message as sign up verification method`<br>
