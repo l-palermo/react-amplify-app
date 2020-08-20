@@ -29,17 +29,22 @@ describe('Navbar', () => {
     });
     it('should render a navbar with the logo', () => {
         const wrapper = setupTest();
-        expect(wrapper.find('[data-qa="navbar"] [data-qa="logo"]')).toHaveClassName('logo');
+        expect(wrapper.find('[data-qa="navbar"] [data-qa="logo"]')).toHaveLength(1);
     });
     it('should render a navbar with the correct buttons', () => {
         const wrapper = setupTest();
-        const buttonNames = [{ name: 'Search' }, { name: 'Collections' }, { name: 'Log out' }];
+        const buttonIds = [
+            { dataId: 'home-button' },
+            { dataId: 'search-button' },
+            { dataId: 'collections-button' },
+            { dataId: 'log-out-button' },
+        ];
 
         const buttons = wrapper.find('[data-qa="navbar"] MenuItem');
-        expect(buttons).toHaveLength(3);
+        expect(buttons).toHaveLength(4);
 
         buttons.forEach((button, index) => {
-            expect(button).toHaveProp('name', buttonNames[index].name);
+            expect(button).toHaveProp('dataId', buttonIds[index].dataId);
         });
     });
     it('should route the user to the collection page', () => {

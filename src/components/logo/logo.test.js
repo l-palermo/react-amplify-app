@@ -3,8 +3,9 @@ import { MemoryRouter } from 'react-router-dom';
 import Logo from '.';
 
 const requiredProps = {
-    children: <div id="test" />,
     path: '/',
+    text: 'test',
+    icon: <div data-qa="node-test"> </div>,
 };
 const setupTest = () =>
     mount(
@@ -22,8 +23,14 @@ describe('Logo', () => {
         const wrapper = setupTest();
         expect(wrapper.find('Link')).toHaveProp('to', requiredProps.path);
     });
-    it('should render the correct child', () => {
+    it('should render a logo text', () => {
         const wrapper = setupTest();
-        expect(wrapper.find('div[id="test"]')).toHaveLength(1);
+
+        expect(wrapper.find('.logoText')).toHaveText(requiredProps.text);
+    });
+    it('should render a logo icon', () => {
+        const wrapper = setupTest();
+
+        expect(wrapper.find('[data-qa="node-test"]')).toHaveLength(1);
     });
 });
