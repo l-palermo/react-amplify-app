@@ -43,7 +43,7 @@ describe('App', () => {
         searchInput.simulate('change', { target: { value: 'this is a test' } });
         searchInput.simulate('keypress', { key: 'Enter' });
 
-        expect(wrapper.find('Suspense').prop('fallback').props.children).toEqual('Hello world');
+        expect(wrapper.find('[data-qa="loading-spinner"]')).toHaveLength(1);
         await act(async () => wrapper.find('[data-id="search-page"]'));
         // strange situation to be resolved, one await act() is not sufficient
         await act(async () => wrapper.find('[data-id="search-page"]'));

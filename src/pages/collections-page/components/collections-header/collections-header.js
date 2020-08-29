@@ -14,9 +14,11 @@ const CollectionsHeader = ({ onCreateCollection }) => {
 
     return (
         <>
-            <Text dataId="collections-header-title" tag={Text.tags.H1}>
-                {'Add a new collection..'}
-            </Text>
+            <div className={styles.textSpacing}>
+                <Text dataId="collections-header-title" tag={Text.tags.H1}>
+                    {'Add a new collection..'}
+                </Text>
+            </div>
             <div className={styles.collectionsHeader}>
                 <MenuItem
                     dataId="add-collection-button"

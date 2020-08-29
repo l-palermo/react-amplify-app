@@ -8,6 +8,7 @@ import Background from './pages/shared-components/background';
 import Navbar from './pages/shared-components/navbar';
 import logOut from './helpers/user-log/log-out';
 import { UserContextProvider } from './helpers/user-context/user-context';
+import LoadingSpinner from './components/loading-spinner';
 
 const SearchPage = React.lazy(() => import('./pages/search-page'));
 const CollectionsPage = React.lazy(() => import('./pages/collections-page/collections-page'));
@@ -27,7 +28,7 @@ const App = () => {
                     <Navbar logOut={logOut} />
                     <Switch>
                         <Route exact path="/" render={() => <HomePage />} />
-                        <Suspense fallback={<div>{'Hello world'}</div>}>
+                        <Suspense fallback={<LoadingSpinner />}>
                             <Route path="/search" render={() => <SearchPage />} />
                             <Route exact path="/collections" render={() => <CollectionsPage />} />
                             <Route

@@ -8,7 +8,7 @@ import MenuItem from '../../../components/menu-item';
 import Logo from '../../../components/logo';
 import LogOutIcon from '../../../assets/log-out/log-out.svg';
 import CollectionIcon from '../../../assets/collection/collection.svg';
-import pawIcon from '../../../assets/paw/paw.svg';
+import PawIcon from '../../../assets/paw/paw.svg';
 import SearchInput from './components/search-input';
 import { UserContext } from '../../../helpers/user-context/user-context';
 
@@ -29,7 +29,7 @@ const Navbar = ({ logOut }) => {
                     <Logo
                         path="/"
                         text="CATURDAY"
-                        icon={<MenuItem dataId="home-button" Icon={pawIcon} />}
+                        icon={<MenuItem dataId="home-button" Icon={PawIcon} />}
                     />
                     <div className={styles.buttons}>
                         <SearchInput onSearch={handleSearch} />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './collection-page.module.css';
 import Container from '../../components/container';
 import CardsLayout from '../../components/cards-layout';
 import Text from '../../components/text';
@@ -16,7 +17,12 @@ const CollectionPage = ({ collectionId, collectionName }) => {
 
     return (
         <Container dataId="collection-page">
-            <Text dataId="collection-page-title" tag={Text.tags.H1}>{`${collectionName}...`}</Text>
+            <div className={styles.textSpacing}>
+                <Text
+                    dataId="collection-page-title"
+                    tag={Text.tags.H1}
+                >{`${collectionName}...`}</Text>
+            </div>
             <CardsLayout dataId="collection-page-cards-layout" ariaLabel="group, gifs imagess">
                 {gifs.map(({ gifUrl, gifName, id, title, copyUrl }) => {
                     return (

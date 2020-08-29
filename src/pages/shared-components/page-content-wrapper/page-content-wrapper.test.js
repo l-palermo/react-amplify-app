@@ -11,7 +11,7 @@ window.IntersectionObserver = jest.fn().mockImplementation((callback) => {
     };
 });
 
-const props = {
+const requiredProps = {
     gifs: [
         {
             webpUrl: 'https://banana.com',
@@ -31,17 +31,16 @@ const props = {
     pageTitle: 'test',
     dataId: 'test-page',
 };
-const setupTest = () => mount(<PageContentWrapper {...props} />);
+const setupTest = (props) => mount(<PageContentWrapper {...requiredProps} {...props} />);
 
 describe('PageContentWrapper', () => {
     beforeEach(() => {
         jest.clearAllMocks();
     });
-
     it('should render the page title correctly', () => {
         const wrapper = setupTest();
 
-        expect(wrapper.find("h1[data-id='test-page-title']")).toHaveText(props.pageTitle);
+        expect(wrapper.find("h1[data-id='test-page-title']")).toHaveText(requiredProps.pageTitle);
     });
     it('should render the cards correctly', () => {
         const wrapper = setupTest();
@@ -52,5 +51,11 @@ describe('PageContentWrapper', () => {
         setupTest();
 
         expect(window.IntersectionObserver).toHaveBeenCalledTimes(1);
+    });
+    it('should display an helpful message if the payload is empty', () => {
+        const props = { helpfulMessage: 'test', hasHelpfulMessage: true };
+        const wrapper = setupTest(props);
+
+        expect(wrapper.find('[data-id="test-page-cards-layout"]')).toHaveText(props.helpfulMessage);
     });
 });

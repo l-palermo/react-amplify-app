@@ -10,6 +10,9 @@ It uses AWS Amplify for user authentication, securely store data and user metada
 ---
 
 `Todos:`<br>
+`Fix bugs, collection name has to have a maximum length or reduce the size as per the container`<br>
+`Add service worker`<br>
+`Fetch gifs on scrolling`<br>
 `Create a GitHub packages repo and migrate app components`<br>
 `Refactor database mock queries to catch error and adjust test`<br>
 `Review test and code structure - Some`<br>

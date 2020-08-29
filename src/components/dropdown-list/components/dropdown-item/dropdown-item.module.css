@@ -1,9 +1,10 @@
 .dropdownItem {
     border: none;
     background-color: white;
-    border-radius: 0.25rem;
-    margin-bottom: 2px;
+    border-radius: var(--spacing-xxs);
+    margin-bottom: var(--spacing-xxs);
     cursor: pointer;
+    padding: var(--spacing-xs);
 
     &:hover {
         background-color: lightgrey;

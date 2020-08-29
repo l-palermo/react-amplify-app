@@ -2,6 +2,10 @@ import React from 'react';
 
 import MenuItem from '.';
 
+const mockMaxTouchPoints = jest.fn().mockImplementation((value) => {
+    global.navigator.maxTouchPoints = value;
+});
+
 const requiredProps = {
     Icon: () => <div />,
     onClick: jest.fn(),
@@ -53,8 +57,9 @@ describe('MenuItem', () => {
             const wrapper = setupTest({ isHeaderItem: true });
             expect(wrapper.find('button')).toHaveClassName('button hasCircle isHeaderItem');
         });
-        it('should render a name box on mouse enter', () => {
-            const props = { isHeaderItem: true, name: 'test' };
+        it('should render a name box on mouse enter if the device is desktop', () => {
+            mockMaxTouchPoints(0);
+            const props = { name: 'test' };
             const wrapper = setupTest(props);
 
             wrapper.simulate('mouseenter');
@@ -62,6 +67,17 @@ describe('MenuItem', () => {
 
             wrapper.simulate('mouseleave');
             expect(wrapper.find('[data-qa="name-box"]')).toHaveLength(0);
+        });
+        it('should render a title box on click if the device is touch screen and MenuItem is an header item', () => {
+            mockMaxTouchPoints(1);
+            const props = { name: 'test', isHeaderItem: true };
+            const wrapper = setupTest(props);
+
+            wrapper.simulate('mouseenter');
+            expect(wrapper.find('[data-qa="name-box"]')).toHaveLength(0);
+
+            wrapper.find('button').simulate('click');
+            expect(wrapper.find('[data-qa="name-box"]')).toHaveLength(1);
         });
     });
 });

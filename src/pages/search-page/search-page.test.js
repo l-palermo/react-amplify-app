@@ -21,12 +21,24 @@ const data = [
     },
 ];
 
-global.fetch = jest.fn().mockImplementation(() =>
-    Promise.resolve({
-        json: () => ({
-            gfycats: data,
-        }),
-    })
+window.IntersectionObserver = jest.fn().mockImplementation((callback) => {
+    const entries = [{ isIntersecting: true }, { isIntersecting: false }];
+    callback(entries);
+    return {
+        observe: () => {},
+        unobserve: () => {},
+        disconnect: () => {},
+    };
+});
+
+const mockFetch = jest.fn().mockImplementation(
+    (payload) =>
+        (global.fetch = () =>
+            Promise.resolve({
+                json: () => ({
+                    gfycats: payload,
+                }),
+            }))
 );
 
 const setupTest = (searchValue) =>
@@ -38,13 +50,15 @@ const setupTest = (searchValue) =>
 
 describe('Search result page', () => {
     afterEach(() => {
-        jest.resetAllMocks();
+        jest.clearAllMocks();
     });
     it('render the page correctly', async () => {
+        mockFetch(data);
+
         let wrapper;
 
         await act(async () => {
-            wrapper = setupTest({ searchValue: 'test' });
+            wrapper = await setupTest({ searchValue: 'test' });
         });
         wrapper.update();
 
@@ -56,9 +70,20 @@ describe('Search result page', () => {
             expect(item.find('img')).toHaveProp('alt', 'gif');
         });
     });
+    it("should render the an helpful message if the search doesn't return any gif", async () => {
+        mockFetch([]);
 
-    it('should render the last search gifs if page refresh', () => {
-        const wrapper = setupTest({ searchValue: '' });
-        expect(wrapper.find('CardsLayout [className="card"]')).toHaveLength(0);
+        let wrapper;
+
+        await act(async () => {
+            wrapper = setupTest({ searchValue: 'test' });
+        });
+        wrapper.update();
+
+        expect(wrapper.find('Container [data-id="search-page"]')).toHaveLength(1);
+        expect(wrapper.find('CardsLayout [data-id="search-page-cards-layout"]')).toHaveLength(1);
+        expect(wrapper.find('CardsLayout [data-id="search-page-cards-layout"]')).toHaveText(
+            'Oooops.. no gifs match your search. Try again..'
+        );
     });
 });
