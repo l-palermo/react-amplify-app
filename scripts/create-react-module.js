@@ -44,6 +44,7 @@ function createMain(path, name, nameCamelCase) {
     const main = path + '/' + name + '.js';
     const mainContent = `import React from 'react';
 import PropTypes from 'prop-types';\n
+import styles from './${name}.module.css';\n
 const ${nameCamelCase} = () => {
     return (<></>);
 };\n
@@ -63,7 +64,7 @@ function createTest(path, name, nameCamelCase) {
     const testContent = `import React from 'react';\n
 import ${nameCamelCase} from '.';\n
 const requiredProps = {\n\n};\n
-const setupTest = mount(<${nameCamelCase} {...requiredProps} />);\n
+const setupTest = () => mount(<${nameCamelCase} {...requiredProps} />);\n
 describe('${nameCamelCase}', () => {
     it('should ', () => {
         const wrapper = setupTest();
@@ -77,8 +78,21 @@ describe('${nameCamelCase}', () => {
     });
 }
 
+function createStyle(path, name, nameCamelCase) {
+    const style = path + '/' + name + '.module.css';
+    const styleContent = `.${nameCamelCase} {
+
+}\n`;
+
+    fs.writeFile(style, styleContent, (error) => {
+        if (error) {
+            console.log('There is an error' + error);
+        }
+    });
+}
+
 (async () => {
-    userInput.question('Enter folder name/path (path starts from src/): ', async function (
+    userInput.question('Enter folder folder path (path starts from src/): ', async function (
         folderName
     ) {
         userInput.question('Enter component name (kebab-case): ', async function (componentName) {
@@ -89,6 +103,7 @@ describe('${nameCamelCase}', () => {
             await createIndex(location, componentName, nameCamelCase);
             await createMain(location, componentName, nameCamelCase);
             await createTest(location, componentName, nameCamelCase);
+            await createStyle(location, componentName, nameCamelCase);
 
             userInput.close();
         });

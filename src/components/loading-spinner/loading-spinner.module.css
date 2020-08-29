@@ -1,0 +1,33 @@
+:root {
+    --container-height: calc(100vh - 100px);
+}
+
+@keyframes spinner {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(2);
+    }
+}
+
+.loadingSpinner {
+    width: 100%;
+    height: var(--container-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    width: var(--spacing-xxl);
+    height: var(--spacing-xxl);
+    fill: white;
+    animation: spinner 0.75s linear infinite;
+
+    @media (min-width: 480px) {
+        width: calc(2 * var(--spacing-xxl));
+        height: calc(2 * var(--spacing-xxl));
+    }
+}

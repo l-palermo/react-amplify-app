@@ -2,8 +2,13 @@
     display: flex;
     align-items: center;
     margin-bottom: var(--spacing-l);
+    padding-left: var(--spacing-xs);
 
     @media (min-width: 480px) {
         margin-bottom: var(--spacing-xl);
     }
+}
+
+.textSpacing {
+    padding-left: var(--spacing-xs);
 }

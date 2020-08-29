@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './page-content-layout.module.css';
+import styles from './page-content-wrapper.module.css';
 import Container from '../../../components/container';
 import CardsLayout from '../../../components/cards-layout';
 import Text from '../../../components/text';
 import CardWithHeader from '../card-with-header';
 import useIO from '../../../helpers/hooks/useIO';
 
-const PageContentWrapper = ({ gifs, pageTitle, dataId }) => {
+const PageContentWrapper = ({ gifs, pageTitle, dataId, helpfulMessage, hasHelpfulMessage }) => {
     const useIOoptions = { threshold: 0.25, root: null };
 
     const [entries, setElements, observer] = useIO(useIOoptions);
@@ -36,17 +36,21 @@ const PageContentWrapper = ({ gifs, pageTitle, dataId }) => {
                 </Text>
             </div>
             <CardsLayout dataId={`${dataId}-cards-layout`} ariaLabel="group, gif images">
-                {gifs.map(({ webpUrl, gfyId, title, max2mbGif }) => (
-                    <CardWithHeader
-                        key={gfyId}
-                        dataId={`${dataId}-card-with-header`}
-                        isAdd
-                        copyUrl={max2mbGif}
-                        imageUrl={webpUrl}
-                        title={title}
-                        imageAlt="gif"
-                    />
-                ))}
+                {hasHelpfulMessage ? (
+                    <h1 className={styles.helpfulMessage}>{helpfulMessage}</h1>
+                ) : (
+                    gifs.map(({ webpUrl, gfyId, title, max2mbGif }) => (
+                        <CardWithHeader
+                            key={gfyId}
+                            dataId={`${dataId}-card-with-header`}
+                            isAdd
+                            copyUrl={max2mbGif}
+                            imageUrl={webpUrl}
+                            title={title}
+                            imageAlt="gif"
+                        />
+                    ))
+                )}
             </CardsLayout>
         </Container>
     );
@@ -62,11 +66,15 @@ PageContentWrapper.propTypes = {
             max2mbGif: PropTypes.string.isRequired,
         }).isRequired
     ).isRequired,
-    pageTitle: PropTypes.string.isRequired,
+    hasHelpfulMessage: PropTypes.bool,
+    helpfulMessage: PropTypes.string,
+    pageTitle: PropTypes.node.isRequired,
 };
 
 PageContentWrapper.defaultProps = {
     dataId: '',
+    hasHelpfulMessage: false,
+    helpfulMessage: '',
 };
 
 export default PageContentWrapper;

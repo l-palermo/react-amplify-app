@@ -31,9 +31,11 @@ const CollectionsPage = () => {
     return (
         <Container dataId="collections-page">
             <CollectionsHeader onCreateCollection={createCollection} />
-            <Text dataId="collections-page-title" tag={Text.tags.H1}>
-                {'Collections...'}
-            </Text>
+            <div className={styles.textSpacing}>
+                <Text dataId="collections-page-title" tag={Text.tags.H1}>
+                    {'Collections...'}
+                </Text>
+            </div>
             <div
                 className={styles.layout}
                 data-qa="collections-page-cards-layout"

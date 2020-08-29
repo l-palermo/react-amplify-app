@@ -15,6 +15,7 @@
     grid-template-columns: repeat(auto-fit, minmax(var(--collection-cell-width), 100%));
     grid-gap: 1rem;
     overflow: hidden;
+    padding: var(--spacing-xs);
 
     @media (min-width: 480px) {
         grid-template-columns: repeat(
@@ -22,4 +23,8 @@
             minmax(var(--collection-cell-width), var(--collection-cell-width))
         );
     }
+}
+
+.textSpacing {
+    padding-left: var(--spacing-xs);
 }

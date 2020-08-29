@@ -17,6 +17,11 @@ const MenuItem = ({
 }) => {
     const [hasNameBox, setHasNameBox] = useState(false);
 
+    const isTouchScreen = () => {
+        if (navigator.maxTouchPoints > 0) return true;
+        return false;
+    };
+
     return (
         <div
             data-qa="menu-item"
@@ -25,8 +30,10 @@ const MenuItem = ({
                 [styles.isOnHeader]: isHeaderItem,
                 [styles.paddingRight]: hasPaddingRight,
             })}
-            onMouseEnter={() => setHasNameBox(true)}
-            onMouseLeave={() => setHasNameBox(false)}
+            {...(!isTouchScreen() && {
+                onMouseEnter: () => setHasNameBox(true),
+                onMouseLeave: () => setHasNameBox(false),
+            })}
         >
             <button
                 aria-label={name}
@@ -35,7 +42,12 @@ const MenuItem = ({
                     [styles.isHeaderItem]: isHeaderItem,
                 })}
                 type="button"
-                onClick={onClick}
+                onClick={() => {
+                    onClick();
+                    if (isTouchScreen() && isHeaderItem) {
+                        setHasNameBox(!hasNameBox);
+                    }
+                }}
             >
                 <Icon className={styles.icon} />
             </button>

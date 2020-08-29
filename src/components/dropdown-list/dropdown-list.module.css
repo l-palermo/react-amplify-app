@@ -1,12 +1,12 @@
 .dropdownList {
-    width: 100px;
+    width: var(--spacing-xxxl);
     height: fit-content;
     background-color: transparent;
-    border-radius: 0.25rem;
+    border-radius: var(--spacing-xxs);
     display: flex;
     flex-direction: column;
-    padding: 2px;
-    max-height: 100px;
+    padding: var(--spacing-xxs);
+    max-height: var(--spacing-xxxxl);
     overflow: auto;
 }
 
