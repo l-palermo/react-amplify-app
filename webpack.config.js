@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const address = require('address');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -113,6 +114,9 @@ module.exports = function (webpackEnv) {
                   contentBase: './dist',
                   // needs to be specified, he default one is not recognised, strange.
                   port: 8000,
+
+                  host: address.ip(),
+
                   // compress the bundle
                   compress: true,
                   //   hot: true,
