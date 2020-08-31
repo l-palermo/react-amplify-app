@@ -8,7 +8,6 @@ const mockMaxTouchPoints = jest.fn().mockImplementation((value) => {
 
 const requiredProps = {
     Icon: () => <div />,
-    onClick: jest.fn(),
     name: 'title',
 };
 
@@ -28,11 +27,6 @@ describe('MenuItem', () => {
             wrapper.simulate('mouseenter');
             wrapper.update();
             expect(wrapper.find('[data-qa="name-box"]')).toHaveClassName('nameBox');
-        });
-        it('should call the passed function when clicked', () => {
-            const wrapper = setupTest();
-            wrapper.find('button').simulate('click');
-            expect(requiredProps.onClick).toHaveBeenCalled();
         });
         it('should have a aria label attributo for accessibility', () => {
             const wrapper = setupTest();
@@ -78,6 +72,15 @@ describe('MenuItem', () => {
 
             wrapper.find('button').simulate('click');
             expect(wrapper.find('[data-qa="name-box"]')).toHaveLength(1);
+
+            wrapper.find('button').simulate('click');
+            expect(wrapper.find('[data-qa="name-box"]')).toHaveLength(0);
+        });
+        it('should call the passed function when clicked', () => {
+            const props = { onClick: jest.fn() };
+            const wrapper = setupTest(props);
+            wrapper.find('button').simulate('click');
+            expect(props.onClick).toHaveBeenCalled();
         });
     });
 });

@@ -43,10 +43,8 @@ const MenuItem = ({
                 })}
                 type="button"
                 onClick={() => {
-                    onClick();
-                    if (isTouchScreen() && isHeaderItem) {
-                        setHasNameBox(!hasNameBox);
-                    }
+                    if (onClick) onClick();
+                    if (isTouchScreen() && isHeaderItem) setHasNameBox(!hasNameBox);
                 }}
             >
                 <Icon className={styles.icon} />
