@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './card-with-header.module.css';
 import Card from '../../../components/card';
 import MenuItem from '../../../components/menu-item';
 import DropdownList from '../../../components/dropdown-list';
@@ -81,27 +82,29 @@ const CardWithHeader = ({
             )}
 
             {isVisible && (
-                <DropdownList>
-                    {items.map(({ id, name }) => {
-                        const input = {
-                            title: title,
-                            gifUrl: imageUrl,
-                            gifName: imageAlt,
-                            collectionID: id,
-                            copyUrl: copyUrl,
-                        };
-                        return (
-                            <DropdownList.Item
-                                key={id}
-                                name={name}
-                                onClick={() => {
-                                    gifCreate(input);
-                                    setIsVisible(!isVisible);
-                                }}
-                            />
-                        );
-                    })}
-                </DropdownList>
+                <div className={styles.dropdownList}>
+                    <DropdownList>
+                        {items.map(({ id, name }) => {
+                            const input = {
+                                title: title,
+                                gifUrl: imageUrl,
+                                gifName: imageAlt,
+                                collectionID: id,
+                                copyUrl: copyUrl,
+                            };
+                            return (
+                                <DropdownList.Item
+                                    key={id}
+                                    name={name}
+                                    onClick={() => {
+                                        gifCreate(input);
+                                        setIsVisible(!isVisible);
+                                    }}
+                                />
+                            );
+                        })}
+                    </DropdownList>
+                </div>
             )}
         </Card>
     );

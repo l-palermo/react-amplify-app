@@ -6,6 +6,7 @@
     --name-box-spacing-mq-small: 2.75rem;
     --name-box-spacing-mq-medium: 3.5rem;
     --header-icon-padding: 0.35rem;
+    --title-box-left-spacing: 2.75rem;
 }
 
 .menuItem {
@@ -19,25 +20,30 @@
 }
 
 .button {
-    max-width: var(--button-radius-mq-small);
-    min-width: var(--button-radius-mq-small);
-    height: var(--button-radius-mq-small);
     display: flex;
     align-items: center;
     border: none;
     background-color: transparent;
     justify-content: center;
     cursor: pointer;
-    padding: var(--spacing-xs);
     fill: rgb(116, 116, 116);
+    padding: 0;
 
     &:hover {
         fill: rgb(168, 168, 168);
     }
 }
 
-@media (min-width: 480px) {
-    .button {
+.iconBackground {
+    max-width: var(--button-radius-mq-small);
+    min-width: var(--button-radius-mq-small);
+    height: var(--button-radius-mq-small);
+    border-radius: 50%;
+    background-color: white;
+    padding: var(--spacing-xs);
+    box-sizing: border-box;
+
+    @media (min-width: 480px) {
         min-width: var(--button-radius-mq-medium);
         height: var(--button-radius-mq-medium);
         padding: var(--spacing-s);
@@ -56,11 +62,6 @@
     @media (min-width: 480px) {
         padding-right: var(--spacing-m);
     }
-}
-
-.hasCircle {
-    border-radius: 50%;
-    background-color: white;
 }
 
 .nameBox {
@@ -96,12 +97,12 @@
     min-width: var(--header-item-radius);
     max-width: var(--header-item-radius);
     padding: var(--header-icon-padding);
-    margin-bottom: var(--spacing-xs);
+    margin: calc(var(--spacing-s) / 2) var(--spacing-s) calc(var(--spacing-s) / 2) var(--spacing-s);
 }
 
 .titleBox {
     position: absolute;
-    transform: translate(2rem, 0);
+    transform: translate(var(--title-box-left-spacing), calc(var(--spacing-s) / 2));
     background-color: rgba(0, 0, 0, 0.575);
     color: white;
     padding: var(--spacing-xxs) var(--spacing-xs);

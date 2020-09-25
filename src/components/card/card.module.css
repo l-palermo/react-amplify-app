@@ -35,7 +35,7 @@
 
 .cardHeader {
     position: absolute;
-    margin: var(--spacing-m);
+    margin-top: calc(var(--spacing-s)/ 2);
     cursor: pointer;
     display: flex;
     flex-direction: column;

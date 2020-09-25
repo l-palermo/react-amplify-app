@@ -43,7 +43,6 @@ const CollectionsHeader = ({ onCreateCollection }) => {
                                 dataId="add-button"
                                 Icon={AddIcon}
                                 name="Add"
-                                hasCircle={false}
                                 onClick={() => {
                                     onCreateCollection(collectionName);
                                     setCollectionName('');
