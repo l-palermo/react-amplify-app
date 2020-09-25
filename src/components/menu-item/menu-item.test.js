@@ -28,17 +28,13 @@ describe('MenuItem', () => {
             wrapper.update();
             expect(wrapper.find('[data-qa="name-box"]')).toHaveClassName('nameBox');
         });
-        it('should have a aria label attributo for accessibility', () => {
+        it('should have a aria label attribut for accessibility', () => {
             const wrapper = setupTest();
 
             expect(wrapper.find('button')).toHaveProp('aria-label', requiredProps.name);
         });
     });
     describe('custom', () => {
-        it('should render an icon surrounded by a circle', () => {
-            const wrapper = setupTest({ hasCircle: true });
-            expect(wrapper.find('button')).toHaveClassName('button hasCircle');
-        });
         it('should render an icon with a right padding', () => {
             const wrapper = setupTest({ hasPaddingRight: true });
             expect(wrapper.find('[data-qa="menu-item"]')).toHaveClassName('menuItem paddingRight');
@@ -49,7 +45,9 @@ describe('MenuItem', () => {
         });
         it('should render a small button when isHeaderItem is true', () => {
             const wrapper = setupTest({ isHeaderItem: true });
-            expect(wrapper.find('button')).toHaveClassName('button hasCircle isHeaderItem');
+            expect(wrapper.find('button [data-qa="icon-background"]')).toHaveClassName(
+                'iconBackground isHeaderItem'
+            );
         });
         it('should render a name box on mouse enter if the device is desktop', () => {
             mockMaxTouchPoints(0);

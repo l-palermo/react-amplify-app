@@ -112,15 +112,10 @@ module.exports = function (webpackEnv) {
                   historyApiFallback: true,
                   // tells webpack where to take the content from
                   contentBase: './dist',
-                  // needs to be specified, he default one is not recognised, strange.
+                  // needs to be specified, the default one is not recognised
                   port: 8000,
-
                   host: address.ip(),
-
-                  // compress the bundle
                   compress: true,
-                  //   hot: true,
-                  // hotOnly: true,
                   stats: 'minimal',
                   watchContentBase: true,
               }

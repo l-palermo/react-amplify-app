@@ -8,7 +8,6 @@ const MenuItem = ({
     Icon,
     onClick,
     hasPaddingRight,
-    hasCircle,
     name,
     isHeaderItem,
     dataId,
@@ -37,17 +36,19 @@ const MenuItem = ({
         >
             <button
                 aria-label={name}
-                className={cx(styles.button, {
-                    [styles.hasCircle]: hasCircle,
-                    [styles.isHeaderItem]: isHeaderItem,
-                })}
+                className={styles.button}
                 type="button"
                 onClick={() => {
                     if (onClick) onClick();
                     if (isTouchScreen() && isHeaderItem) setHasNameBox(!hasNameBox);
                 }}
             >
-                <Icon className={styles.icon} />
+                <div
+                    data-qa="icon-background"
+                    className={cx(styles.iconBackground, { [styles.isHeaderItem]: isHeaderItem })}
+                >
+                    <Icon className={styles.icon} />
+                </div>
             </button>
             {hasNameBox && name && (
                 <div
@@ -69,7 +70,6 @@ const MenuItem = ({
 MenuItem.propTypes = {
     dataId: PropTypes.string,
     hasPaddingRight: PropTypes.bool,
-    hasCircle: PropTypes.bool,
     isAlignedLeft: PropTypes.bool,
     isAlignedRight: PropTypes.bool,
     Icon: PropTypes.func.isRequired,
@@ -81,7 +81,6 @@ MenuItem.propTypes = {
 MenuItem.defaultProps = {
     dataId: '',
     hasPaddingRight: false,
-    hasCircle: true,
     isAlignedLeft: false,
     isAlignedRight: false,
     isHeaderItem: false,

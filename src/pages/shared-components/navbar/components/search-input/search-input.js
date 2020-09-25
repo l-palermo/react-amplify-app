@@ -20,7 +20,6 @@ const SearchInput = ({ onSearch }) => {
                     dataId="arrow-close-button"
                     Icon={ArrowRightIcon}
                     name="Close"
-                    hasCircle={false}
                     onClick={() => setIsVisible(false)}
                 />
             }
